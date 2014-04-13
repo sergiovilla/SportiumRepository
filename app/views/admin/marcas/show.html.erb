@@ -1,0 +1,27 @@
+
+<div class="row">
+	<div class="col-md-3">
+
+		<div class="panel panel-primary">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Nombre</h3>
+		  </div>
+		  <div class="panel-body">
+		    <%= @marca.nombre %>
+		  </div>
+		</div>
+
+		<div class="panel panel-primary">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">País</h3>
+		  </div>
+		  <div class="panel-body">
+		    <%= @marca.pais %>
+		  </div>
+		</div>
+
+	</div>
+</div>
+
+<%= link_to 'Editar', { :action => 'edit', :id => @marca }, :class => 'btn btn-success' %>
+<%= link_to 'Volver', { :action => 'index' }, :class => 'btn btn-default btn-sm' %>

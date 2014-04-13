@@ -1,0 +1,17 @@
+<div class="row">
+	<div class="col-md-3">
+
+		<div class="panel panel-primary">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Talla</h3>
+		  </div>
+		  <div class="panel-body">
+		    <%= @talla.nombre %>
+		  </div>
+		</div>
+
+	</div>
+</div>
+
+<%= link_to 'Editar', { :action => 'edit', :id => @talla }, :class => 'btn btn-success' %>
+<%= link_to 'Volver', { :action => 'index' }, :class => 'btn btn-default btn-sm' %>

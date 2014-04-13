@@ -1,0 +1,11 @@
+<div class="row">
+	<div class="col-md-4">
+		<%= form_tag :action => 'create' do %>   
+		  <%= render 'form' %>   
+		  <%= submit_tag 'Añadir color', :class => 'btn btn-primary' %>
+		<% end %>
+	</div>
+</div>
+
+<br>
+<%= link_to 'Back', { :action => 'index' }, :class => 'btn btn-default btn-sm' %>

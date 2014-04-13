@@ -1,0 +1,9 @@
+<tr>
+  <td><%= link_to talla.nombre, :action => 'show', :id => talla %></td>
+  <td><%= link_to 'Editar', :action => 'edit', :id => talla %></td>
+  <td>
+    <%= button_to "Borrar", admin_talla_path(talla), :method => :delete, 
+    	:class => 'btn btn-danger btn-sm', 
+        :confirm => "¿Está seguro de que desea eliminar la talla #{talla.nombre}?" %>
+  </td>
+</tr>

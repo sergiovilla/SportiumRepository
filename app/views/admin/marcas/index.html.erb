@@ -1,0 +1,17 @@
+
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<table class="table table-striped">
+		  <tr>
+		    <th>Nombre</th>
+		    <th>Pais</th>
+		    <th>Editar</th>
+		    <th>Borrar</th>
+		  </tr>
+
+		  <%= render :partial => 'marca', :collection => @marcas %>
+		</table>
+	</div>
+</div>
+
+<%= link_to 'Añadir nueva marca', { :action => 'new' }, :class => 'btn btn-success' %>

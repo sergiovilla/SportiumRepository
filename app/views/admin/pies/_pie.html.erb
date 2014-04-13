@@ -1,0 +1,9 @@
+<tr>
+  <td><%= link_to pie.numero, :action => 'show', :id => pie %></td>
+  <td><%= link_to 'Editar', :action => 'edit', :id => pie %></td>
+  <td>
+    <%= button_to "Borrar", admin_py_path(pie), :method => :delete, 
+    	:class => 'btn btn-danger btn-sm', 
+        :confirm => "¿Está seguro de que desea eliminar el número de pie #{pie.numero}?" %>
+  </td>
+</tr>

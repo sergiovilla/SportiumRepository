@@ -1,0 +1,10 @@
+<tr>
+  <td><%= link_to marca.nombre, :action => 'show', :id => marca %></td>
+  <td><%= marca.pais %></td>
+  <td><%= link_to 'Editar', :action => 'edit', :id => marca %></td>
+  <td>
+    <%= button_to "Borrar", admin_marca_path(marca), :method => :delete, 
+    	:class => 'btn btn-danger btn-sm', 
+        :confirm => "¿Está seguro de que desea eliminar la marca #{marca.nombre}?" %>
+  </td>
+</tr>

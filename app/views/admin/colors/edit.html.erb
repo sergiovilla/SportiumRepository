@@ -1,0 +1,12 @@
+<div class="row">
+	<div class="col-md-4">
+		<%= form_tag admin_color_path(@color), :method => 'put' do %>
+		  <%= render :partial => 'form' %>
+		  <%= submit_tag 'Actualizar color', :class => 'btn btn-primary' %>
+		<% end %>
+	</div>
+</div>
+
+<br>
+<%= link_to 'Mostrar', { :action => 'show', :id => @color }, :class => 'btn btn-success' %>
+<%= link_to 'Volver', { :action => 'index' }, :class => 'btn btn-default btn-sm' %>

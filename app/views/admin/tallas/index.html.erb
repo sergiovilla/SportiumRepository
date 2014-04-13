@@ -1,0 +1,15 @@
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<table class="table table-striped">
+		  <tr>
+		    <th>Nombre</th>
+		    <th>Editar</th>
+		    <th>Borrar</th>
+		  </tr>
+
+		  <%= render :partial => 'talla', :collection => @tallas %>
+		</table>
+	</div>
+</div>
+
+<%= link_to 'Añadir nueva talla', { :action => 'new' }, :class => 'btn btn-success' %>

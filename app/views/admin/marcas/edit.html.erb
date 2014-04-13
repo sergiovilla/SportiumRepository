@@ -1,0 +1,13 @@
+
+<div class="row">
+	<div class="col-md-4">
+		<%= form_tag admin_marca_path(@marca), :method => 'put' do %>
+		  <%= render :partial => 'form' %>
+		  <%= submit_tag 'Actualizar marca', :class => 'btn btn-primary' %>
+		<% end %>
+	</div>
+</div>
+
+<br>
+<%= link_to 'Mostrar', { :action => 'show', :id => @marca }, :class => 'btn btn-success' %>
+<%= link_to 'Volver', { :action => 'index' }, :class => 'btn btn-default btn-sm' %>

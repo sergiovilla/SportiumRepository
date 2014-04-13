@@ -1,0 +1,9 @@
+<tr>
+  <td><%= link_to color.nombre, :action => 'show', :id => color %></td>
+  <td><%= link_to 'Editar', :action => 'edit', :id => color %></td>
+  <td>
+    <%= button_to "Borrar", admin_color_path(color), :method => :delete, 
+    	:class => 'btn btn-danger btn-sm', 
+        :confirm => "¿Está seguro de que desea eliminar el color #{color.nombre}?" %>
+  </td>
+</tr>
