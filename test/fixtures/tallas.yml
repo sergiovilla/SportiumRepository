@@ -2,8 +2,10 @@
 
 one:
   id: 1
-  nombre: M
+  nombre_euro: 38
+  nombre_usa: M
 
 two:
   id: 2
-  nombre: XL
+  nombre_euro: 44
+  nombre_usa: XL

@@ -6,9 +6,9 @@ class Admin::TallasController < ApplicationController
   end
 
   def create
-    @talla = Talla.new(:nombre => params[:talla][:nombre].upcase)
+    @talla = Talla.new(params[:talla])
     if @talla.save
-      flash[:success] = "Talla #{@talla.nombre} creada correctamente"
+      flash[:success] = "Talla #{@talla.nombre_euro}/#{@talla.nombre_usa} creada correctamente"
       redirect_to :action => 'index'
     else
       @page_title = 'Añadir nueva Talla'
@@ -19,13 +19,13 @@ class Admin::TallasController < ApplicationController
 
   def edit
     @talla = get_talla(params[:id])
-    @page_title = "Editando Talla #{@talla.nombre}"
+    @page_title = "Editando Talla #{@talla.nombre_euro}/#{@talla.nombre_usa}}"
   end
 
   def update
     @talla = get_talla(params[:id])
-    if @talla.update_attribute('nombre', params[:talla][:nombre].upcase)
-      flash[:success] = "Talla #{@talla.nombre} actualizada correctamente"
+    if @talla.update_attributes(params[:talla])
+      flash[:success] = "Talla #{@talla.nombre_euro}/#{@talla.nombre_usa} actualizada correctamente"
       redirect_to :action => 'show', :id => @talla
     else
       flash[:error] = @talla.errors.full_messages
@@ -36,13 +36,13 @@ class Admin::TallasController < ApplicationController
   def destroy
     @talla = get_talla(params[:id])
     @talla.destroy
-    flash[:success] = "Talla #{@talla.nombre} eliminada correctamente"
+    flash[:success] = "Talla #{@talla.nombre_euro}/#{@talla.nombre_usa} eliminada correctamente"
     redirect_to :action => 'index'
   end
 
   def show
     @talla = get_talla(params[:id])
-    @page_title = "Talla " + @talla.nombre
+    @page_title = "Talla #{@talla.nombre_euro}/#{@talla.nombre_usa}"
   end
 
   def index

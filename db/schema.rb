@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140411160143) do
+ActiveRecord::Schema.define(:version => 20140411154218) do
 
   create_table "colors", :force => true do |t|
     t.string "nombre"
@@ -24,12 +24,11 @@ ActiveRecord::Schema.define(:version => 20140411160143) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "pies", :force => true do |t|
-    t.integer "numero"
-  end
-
   create_table "tallas", :force => true do |t|
-    t.string "nombre"
+    t.integer  "nombre_euro"
+    t.string   "nombre_usa"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
 end
