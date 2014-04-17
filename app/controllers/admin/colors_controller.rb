@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Admin::ColorsController < ApplicationController
   def new
     @color = Color.new

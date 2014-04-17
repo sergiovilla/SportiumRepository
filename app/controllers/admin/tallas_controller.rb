@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Admin::TallasController < ApplicationController
   def new
     @talla = Talla.new

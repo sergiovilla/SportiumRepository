@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Admin::MarcasController < ApplicationController
   def new
     @marca = Marca.new

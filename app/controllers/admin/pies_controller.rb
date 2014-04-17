@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Admin::PiesController < ApplicationController
   def new
     @pie = Pie.new
