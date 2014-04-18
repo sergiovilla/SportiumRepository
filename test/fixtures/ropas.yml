@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+
+one:
+ id: 1
+ tipo: camiseta
+ nombre: nombre camiseta
+ modelo: modelo camiseta
+ deporte:
+ precio: 17.5
+ nom_equipo:
+ num_pie:
+ marca_id: 1
+ color_id: 1
+ talla_id: 1
+ 
+two:
+ id: 2
+ tipo: equipacion
+ nombre: nombre equipacion
+ modelo: modelo equipacion
+ deporte: deporte equipacion
+ precio: 60
+ nom_equipo: equipo equipacion
+ num_pie:
+ marca_id: 1
+ color_id:
+ talla_id: 1
+ 
+three:
+ id: 3
+ tipo: zapatillas
+ nombre: nombre zapatillas
+ modelo: modelo zapatillas
+ deporte:
+ precio: 25.99
+ nom_equipo:
+ num_pie: 43
+ marca_id: 1
+ color_id:
+ talla_id:

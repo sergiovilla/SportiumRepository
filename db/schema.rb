@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140411154218) do
+ActiveRecord::Schema.define(:version => 20140418140006) do
 
   create_table "colors", :force => true do |t|
     t.string "nombre"
@@ -23,6 +23,25 @@ ActiveRecord::Schema.define(:version => 20140411154218) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "ropas", :force => true do |t|
+    t.string   "tipo"
+    t.string   "nombre"
+    t.string   "modelo"
+    t.string   "deporte"
+    t.float    "precio"
+    t.string   "nom_equipo"
+    t.integer  "num_pie"
+    t.integer  "marca_id"
+    t.integer  "color_id"
+    t.integer  "talla_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "ropas", ["color_id"], :name => "fk_ropas_colors"
+  add_index "ropas", ["marca_id"], :name => "fk_ropas_marcas"
+  add_index "ropas", ["talla_id"], :name => "fk_ropas_tallas"
 
   create_table "tallas", :force => true do |t|
     t.integer  "nombre_euro"
