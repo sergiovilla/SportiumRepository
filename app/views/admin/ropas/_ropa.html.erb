@@ -1,0 +1,10 @@
+<tr>
+  <td><%= ropa.tipo %></td>
+  <td><%= link_to ropa.nombre, :action => 'show', :id => ropa %></td>
+  <td><%= link_to 'Editar', :action => 'edit', :id => ropa %></td>
+  <td>
+    <%= button_to "Borrar", admin_ropa_path(ropa), :method => :delete, 
+    	:class => 'btn btn-danger btn-sm', 
+        :confirm => "¿Está seguro de que desea eliminar #{ropa.tipo} #{ropa.nombre}?" %>
+  </td>
+</tr>

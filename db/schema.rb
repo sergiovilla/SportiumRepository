@@ -39,9 +39,7 @@ ActiveRecord::Schema.define(:version => 20140418140006) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "ropas", ["color_id"], :name => "fk_ropas_colors"
   add_index "ropas", ["marca_id"], :name => "fk_ropas_marcas"
-  add_index "ropas", ["talla_id"], :name => "fk_ropas_tallas"
 
   create_table "tallas", :force => true do |t|
     t.integer  "nombre_euro"

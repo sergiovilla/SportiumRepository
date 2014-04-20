@@ -1,0 +1,16 @@
+<div class="row">
+	<div class="col-md-4">
+		<%= form_tag admin_ropa_path(@ropa), :method => 'put' do %>
+	      <% if @tipoZapatila %>
+ 			<%= render :partial => 'form_zapa' %>
+		  <% else %>
+ 		 	<%= render :partial => 'form_ropa' %>
+		  <% end %>
+		  <%= submit_tag 'Actualizar ropa', :class => 'btn btn-primary' %>
+		<% end %>
+	</div>
+</div>
+
+<br>
+<%= link_to 'Mostrar', { :action => 'show', :id => @ropa }, :class => 'btn btn-success' %>
+<%= link_to 'Volver', { :action => 'index' }, :class => 'btn btn-default btn-sm' %>

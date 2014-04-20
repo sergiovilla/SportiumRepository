@@ -1,0 +1,99 @@
+
+<div class="row">
+	<div class="col-md-3">
+
+		<div class="panel panel-primary">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Tipo</h3>
+		  </div>
+		  <div class="panel-body">
+		    <%= @ropa.tipo %>
+		  </div>
+		</div>
+		
+		<div class="panel panel-primary">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Nombre</h3>
+		  </div>
+		  <div class="panel-body">
+		    <%= @ropa.nombre %>
+		  </div>
+		</div>
+		
+		<div class="panel panel-primary">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Modelo</h3>
+		  </div>
+		  <div class="panel-body">
+		    <%= @ropa.modelo %>
+		  </div>
+		</div>
+		
+		<div class="panel panel-primary">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Deporte</h3>
+		  </div>
+		  <div class="panel-body">
+		    <%= @ropa.deporte %>
+		  </div>
+		</div>
+		
+		<div class="panel panel-primary">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Precio</h3>
+		  </div>
+		  <div class="panel-body">
+		    <%= @ropa.precio %>
+		  </div>
+		</div>
+		
+		<div class="panel panel-primary">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Nombre del equipo</h3>
+		  </div>
+		  <div class="panel-body">
+		    <%= @ropa.nom_equipo %>
+		  </div>
+		</div>
+		
+		<div class="panel panel-primary">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Número de pie</h3>
+		  </div>
+		  <div class="panel-body">
+		    <%= @ropa.num_pie %>
+		  </div>
+		</div>
+		
+		<div class="panel panel-primary">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Marca</h3>
+		  </div>
+		  <div class="panel-body">
+		    <%= "#{@ropa.marca.nombre} #{@ropa.marca.pais}"  %>
+		  </div>
+		</div>
+		
+		<div class="panel panel-primary">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Talla</h3>
+		  </div>
+		  <div class="panel-body">
+		    <%= "#{@ropa.talla.nombre_euro} #{@ropa.talla.nombre_usa}"  %>
+		  </div>
+		</div>
+		
+		<div class="panel panel-primary">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Color</h3>
+		  </div>
+		  <div class="panel-body">
+		    <%= @ropa.color.nombre %>
+		  </div>
+		</div>
+
+	</div>
+</div>
+
+<%= link_to 'Editar', { :action => 'edit', :id => @ropa }, :class => 'btn btn-success' %>
+<%= link_to 'Volver', { :action => 'index' }, :class => 'btn btn-default btn-sm' %>

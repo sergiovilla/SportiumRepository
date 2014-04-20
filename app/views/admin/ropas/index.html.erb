@@ -1,0 +1,16 @@
+
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<table class="table table-striped">
+		  <tr>
+		    <th>Tipo</th>
+		    <th>Nombre</th>
+		    <th>Borrar</th>
+		  </tr>
+
+		  <%= render :partial => 'ropa', :collection => @ropas %>
+		</table>
+	</div>
+</div>
+
+<%= link_to 'Añadir nueva ropa', { :action => 'new' }, :class => 'btn btn-success' %>

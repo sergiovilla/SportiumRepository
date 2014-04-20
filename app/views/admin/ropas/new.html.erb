@@ -1,0 +1,14 @@
+<h1>Crear nuevo producto de ropa</h1>
+<p>Seleccione el tipo de ropa que desee añadir</p>
+
+<%= link_to 'Camiseta', { :action => 'new_ropa', :tipo => 'Camiseta' }, :class => 'btn btn-default btn-sm' %>
+
+<%= link_to 'Calzonas', { :action => 'new_ropa', :tipo => 'Calzonas' }, :class => 'btn btn-default btn-sm' %>
+
+<%= link_to 'Equipación', { :action => 'new_ropa', :tipo => 'Equipación' }, :class => 'btn btn-default btn-sm' %>
+
+<%= link_to 'Chándal', { :action => 'new_ropa', :tipo => 'Chándal' }, :class => 'btn btn-default btn-sm' %>
+
+<%= link_to 'Zapatillas', { :action => 'new_zapatillas' }, :class => 'btn btn-default btn-sm' %>
+<br><br>
+<%= link_to 'Back', { :action => 'index' }, :class => 'btn btn-default btn-sm' %>

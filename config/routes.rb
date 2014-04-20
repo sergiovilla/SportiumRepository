@@ -1,9 +1,13 @@
 Sportium::Application.routes.draw do
 
   root :to => "about#index"
-
+  
+  #rutas no generadas por namespace
+  get 'admin/ropas/new_ropa'
+  get 'admin/ropas/new_zapatillas'
+  
   namespace :admin do
-    resources :marcas, :tallas, :colors, :pies
+    resources :marcas, :tallas, :colors, :ropas
   end
 
   # The priority is based upon order of creation:

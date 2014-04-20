@@ -1,0 +1,46 @@
+  <% if @ropa.errors.any? %>
+  <div id="errorExplanation">
+  <h2><%= pluralize(@ropa.errors.count, "error") %> No se pudo guardar esta 'ropa':</h2>
+    <ul>
+      <% @ropa.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>  
+  
+  <div class="form-group">
+    <label for="ropa_tipo">Tipo</label>
+    <%= text_field 'ropa', 'tipo', :class => 'form-control' %>
+  </div>
+  <div class="form-group">
+    <label for="ropa_nombre">Nombre</label>
+    <%= text_field  'ropa', 'nombre', :class => 'form-control' %>
+  </div>
+  <div class="form-group">
+    <label for="ropa_modelo">Modelo</label>
+    <%= text_field  'ropa', 'modelo', :class => 'form-control' %>
+  </div>
+  <div class="form-group">
+    <label for="ropa_deporte">Deporte (opcional)</label>
+    <%= text_field  'ropa', 'deporte', :class => 'form-control' %>
+  </div>
+  <div class="form-group">
+    <label for="ropa_num_pie">Número de pie</label>
+    <%= text_field  'ropa', 'num_pie', :class => 'form-control' %>
+  </div>
+  
+  <div class="form-group">
+  	<label for="ropa_marca">Marca</label>
+  	<%= collection_select :ropa, :marca_id, @marcas, :id, :nombre %></p>
+  </div>
+  
+  <div class="form-group">
+  	<label for="ropa_color">Color</label>
+  	<%= collection_select :ropa, :color_id, @colores, :id, :nombre %></p>
+  </div>
+
+  <div class="form-group">
+    <label for="ropa_precio">Precio</label>
+    <%= text_field  'ropa', 'precio', :class => 'form-control' %>
+  </div>

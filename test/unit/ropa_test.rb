@@ -65,34 +65,5 @@ fixtures :tallas, :marcas, :colors
 		assert_equal 'Adidas', ropa.marca.nombre
 		
 	end
-	
-	test 'ropas_belonging_to_color' do
-		color1 = Color.find(1)
-		assert_equal 1, color1.ropas.size
-		
-		ropa2 = Ropa.find(2)
-		color1.ropas << ropa2
-		
-		color1.reload
-		ropa2.reload
-		
-		assert_equal 2, color1.ropas.size
-		assert_equal 'Rojo', ropa2.color.nombre
-		
-	end
-	
-	test 'ropas_belonging_to_talla' do
-		talla1 = Talla.find(1)
-		assert_equal 2, talla1.ropas.size
-		
-		ropa3 = Ropa.find(3)
-		talla1.ropas << ropa3
-		
-		talla1.reload
-		ropa3.reload
-		
-		assert_equal 3, talla1.ropas.size
-		assert_equal 'M', ropa3.talla.nombre_usa
-	end
   
 end
