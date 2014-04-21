@@ -87,3 +87,9 @@ body {
     padding-left: 0;
   }
 }
+
+.field_with_errors input {
+  border-color: red;
+  border-width: 3px;
+  background-color: #ffb1b0;
+}
