@@ -1,7 +1,7 @@
 
 <div class="row">
 	<div class="col-md-4">
-		<%= form_tag admin_marca_path(@marca), :method => 'put' do %>
+		<%= form_tag admin_marca_path(@marca), :method => 'put', :multipart => true do %>
 		  <%= render :partial => 'form' %>
 		  <%= submit_tag 'Actualizar marca', :class => 'btn btn-primary' %>
 		<% end %>

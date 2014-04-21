@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140418140006) do
+ActiveRecord::Schema.define(:version => 20140421172509) do
 
   create_table "colors", :force => true do |t|
     t.string "nombre"
@@ -20,8 +20,12 @@ ActiveRecord::Schema.define(:version => 20140418140006) do
   create_table "marcas", :force => true do |t|
     t.string   "nombre"
     t.string   "pais"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "imagen_file_name"
+    t.string   "imagen_content_type"
+    t.integer  "imagen_file_size"
+    t.datetime "imagen_updated_at"
   end
 
   create_table "ropas", :force => true do |t|
@@ -35,8 +39,12 @@ ActiveRecord::Schema.define(:version => 20140418140006) do
     t.integer  "marca_id"
     t.integer  "color_id"
     t.integer  "talla_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "imagen_file_name"
+    t.string   "imagen_content_type"
+    t.integer  "imagen_file_size"
+    t.datetime "imagen_updated_at"
   end
 
   add_index "ropas", ["marca_id"], :name => "fk_ropas_marcas"

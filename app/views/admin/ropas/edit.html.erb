@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-4">
-		<%= form_tag admin_ropa_path(@ropa), :method => 'put' do %>
+		<%= form_tag admin_ropa_path(@ropa), :method => 'put', :multipart => true do %>
 	      <% if @tipoZapatila %>
  			<%= render :partial => 'form_zapa' %>
 		  <% else %>
