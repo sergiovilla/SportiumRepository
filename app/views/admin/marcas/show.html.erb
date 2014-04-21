@@ -19,6 +19,21 @@
 		    <%= @marca.pais %>
 		  </div>
 		</div>
+		
+		<div class="panel panel-primary">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Imagen</h3>
+		  </div>
+		  <% if @marca.imagen.exists? then %>
+		  <div class="panel-body">
+		    <%= image_tag @marca.imagen.url(:thumb) %>
+		  </div>
+		  <% else %>
+		  <div class="panel-body">
+		    <p> No hay imagen disponible. </p>
+		  </div>
+		  <% end %>
+		</div>
 
 	</div>
 </div>

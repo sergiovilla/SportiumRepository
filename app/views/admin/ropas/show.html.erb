@@ -91,6 +91,21 @@
 		    <%= @ropa.color.nombre %>
 		  </div>
 		</div>
+		
+		<div class="panel panel-primary">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Imagen</h3>
+		  </div>
+		  <% if @ropa.imagen.exists? then %>
+		  <div class="panel-body">
+		    <%= image_tag @ropa.imagen.url(:thumb) %>
+		  </div>
+		  <% else %>
+		  <div class="panel-body">
+		    <p> No hay imagen disponible. </p>
+		  </div>
+		  <% end %>
+		</div>
 
 	</div>
 </div>

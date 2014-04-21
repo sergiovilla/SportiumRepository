@@ -43,3 +43,13 @@
     <label for="ropa_precio">Precio</label>
     <%= text_field  'ropa', 'precio', :class => 'form-control' %>
   </div>
+  
+  <div class="field">
+  <% if @ropa.imagen.exists? then %>
+    <dd><%= image_tag @ropa.imagen.url(:medium) %></dd>
+  <% else %>
+    <p> No hay imagen disponible. </p>
+  <% end %>
+  <p><label for="ropa_imagen">Imagen</label><br/>
+  <%= file_field 'ropa', :imagen %></p>
+  </div>
