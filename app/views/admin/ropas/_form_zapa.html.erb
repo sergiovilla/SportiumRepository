@@ -10,8 +10,7 @@
   <% end %>  
   
   <div class="form-group">
-    <label for="ropa_tipo">Tipo</label>
-    <%= text_field 'ropa', 'tipo', :class => 'form-control' %>
+    <%= text_field 'ropa', 'tipo', :value => @tipo, :type => 'hidden', :class => 'form-control' %>
   </div>
   <div class="form-group">
     <label for="ropa_nombre">Nombre</label>

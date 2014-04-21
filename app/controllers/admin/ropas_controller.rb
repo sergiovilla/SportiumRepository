@@ -10,7 +10,11 @@ class Admin::RopasController < ApplicationController
   	@marcas = get_all_marcas()
   	@colores = get_all_colors()
   	@tallas = get_all_tallas()
-  	@page_title = 'Añadiendo ' + params[:tipo]
+  	if @tipo.nil?
+  		@page_title = "Errores de formulario"
+  	else
+  		@page_title = "Añadiendo #{@tipo}"
+    end
   end
   
   def new_zapatillas
@@ -41,17 +45,18 @@ class Admin::RopasController < ApplicationController
   	@marcas = get_all_marcas()
   	@colores = get_all_colors()
   	@tallas = get_all_tallas()
-  	if @ropa.tipo == 'Zapatillas'
+  	@tipo = @ropa.tipo
+  	if @tipo  == 'Zapatillas'
   		@tipoZapatillas = true
   	else @tipoZapatillas = false
   	end
-    @page_title = "Editando #{@ropa.tipo} #{@ropa.nombre} "
+    @page_title = "Editando #{@ropa.nombre} "
   end
 
   def update
  	@ropa = get_ropa(params[:id])
     if @ropa.update_attributes(params[:ropa])
-      flash[:success] = "#{@ropa.tipo} #{@ropa.nombre} actualizada correctamente"
+      flash[:success] = "#{@ropa.nombre} actualizada correctamente"
       redirect_to :action => 'show', :id => @ropa
     else
       flash[:error] = @ropa.errors.full_messages
@@ -62,13 +67,13 @@ class Admin::RopasController < ApplicationController
  def destroy
     @ropa = get_ropa(params[:id])
     @ropa.destroy
-    flash[:success] = "#{@ropa.tipo} #{@ropa.nombre}  eliminada correctamente"
+    flash[:success] = "#{@ropa.nombre}  eliminada correctamente"
     redirect_to :action => 'index'
   end
 
   def show
     @ropa = get_ropa(params[:id])
-    @page_title = "#{@ropa.tipo} #{@ropa.nombre}"
+    @page_title = "#{@ropa.nombre}"
   end
 
   def index
