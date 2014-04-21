@@ -1,5 +1,13 @@
 Sportium::Application.routes.draw do
 
+  get "catalog/index"
+
+  get "catalog/show"
+
+  get "catalog/search"
+
+  get "catalog/latest"
+
   root :to => "about#index"
   
   #rutas no generadas por namespace
