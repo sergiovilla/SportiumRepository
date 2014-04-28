@@ -32,6 +32,11 @@ class CatalogController < ApplicationController
   def show
   	@ropa = Ropa.find(params[:id])
   	@page_title = @ropa.nombre
+	@tipo = @ropa.tipo
+	if @tipo  == 'Zapatillas'
+  		@tipoZapatillas = true
+  	else @tipoZapatillas = false
+  	end
   end
 
   def search
