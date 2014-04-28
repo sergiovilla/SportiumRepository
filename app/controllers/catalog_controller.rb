@@ -1,3 +1,4 @@
+#encoding: utf-8
 class CatalogController < ApplicationController
   def index
   	@page_title = 'Catálogo de productos'
@@ -8,7 +9,7 @@ class CatalogController < ApplicationController
   	@page_title = 'Camisetas'
   end
 
-  def calzonas
+  def calz#encoding: utf-8onas
   	@calzonas = pagination('Calzonas')
   	@page_title = 'Calzonas'
   end
@@ -38,7 +39,7 @@ class CatalogController < ApplicationController
 
   def latest
   	@ropas = Ropa.latest 5 # invoques "lastest" method to get the five latest books
-    @page_title = 'Últimos artículos'
+    	@page_title = 'Últimos artículos'
   end
 
   private

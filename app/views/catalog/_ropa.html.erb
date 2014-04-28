@@ -1,0 +1,18 @@
+<dl id = 'ropa'>
+  <% for ropa in @ropas %>
+    <dd><% if ropa.imagen.exists? then %>
+		  
+		  <%= image_tag ropa.imagen.url(:thumb) %>
+		  
+		  <% else %>
+		  
+		    <p> No hay imagen disponible. </p>
+		  
+		  <% end %>
+
+    </dd>
+    <dt><%= link_to ropa.nombre, :action => 'show', :id => ropa %>
+    <dd>Precio: <%= sprintf("%.2f €", ropa.precio) %></dd>
+    
+    <% end %>
+</dl>
