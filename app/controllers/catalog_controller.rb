@@ -10,7 +10,7 @@ class CatalogController < ApplicationController
   	@page_title = 'Camisetas'
   end
 
-  def calz#encoding: utf-8onas
+  def calzonas
   	@calzonas = pagination('Calzonas')
   	@page_title = 'Calzonas'
   end
