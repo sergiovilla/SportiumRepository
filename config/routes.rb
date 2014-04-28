@@ -1,11 +1,13 @@
 Sportium::Application.routes.draw do
 
   get "catalog/index"
-
+  get "catalog/camisetas"
+  get "catalog/calzonas"
+  get "catalog/equipaciones"
+  get "catalog/zapatillas"
+  get "catalog/chandals"
   get "catalog/show"
-
   get "catalog/search"
-
   get "catalog/latest"
 
   root :to => "about#index"
@@ -15,7 +17,11 @@ Sportium::Application.routes.draw do
   get 'admin/ropas/new_zapatillas'
   
   namespace :admin do
-    resources :marcas, :tallas, :colors, :ropas
+    resources :marcas, :tallas, :colors
+  end
+
+  namespace :admin do
+    resources :ropas, except: :new
   end
 
   # The priority is based upon order of creation:

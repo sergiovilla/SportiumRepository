@@ -1,0 +1,10 @@
+<p><%= link_to 'Últimos productos', :action => 'latest' %></p>
+
+<dl>
+  <% for camiseta in @camisetas %>
+    <dt><%= link_to ropa.nombre, :action => 'show', :id => ropa %>
+    <dd>Precio: <%= sprintf("%.2f €", ropa.precio) %></dd>
+  <% end %>
+</dl>
+
+<%= will_paginate @camisetas, :renderer: BootstrapPagination::Rails %>

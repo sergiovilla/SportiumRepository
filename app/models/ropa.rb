@@ -20,4 +20,8 @@ class Ropa < ActiveRecord::Base
 	validates :num_pie, allow_nil: true, :length => { :is => 2 }, numericality: { only_integer: true }
 	
   	attr_accessible :marca_id, :color_id, :talla_id, :tipo, :nombre, :precio, :modelo, :num_pie, :nom_equipo, :deporte, :imagen
+
+  	def self.latest(num)
+    	find :all, :limit => num, :order => "ropas.id desc"
+  end
 end
