@@ -15,11 +15,6 @@
 /tmp
 *~
 
-# Ignore all logfiles and tempfiles.
-/log/*.log
-/tmp
-*~
-
 *.gem
 *.rbc
 .bundle
@@ -38,6 +33,9 @@ tmp
 .yardoc
 _yardoc
 doc/
+
+# Public folder
+public/
 
 # Mac OS X
 .DS_STORE
