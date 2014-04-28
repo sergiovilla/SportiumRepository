@@ -1,2 +1,48 @@
-<h1>Catalog#show</h1>
+<h1>Catalogo Ropa</h1>
+
+
+
+<% if @tipoZapatillas %>
+	<dl>
+	  <dt>Marca</dt>
+	  <dd><%= @ropa.marca.nombre %></dd>
+          <dt>Modelo</dt>
+	  <dd><%= @ropa.modelo %></dd>
+	  <dt>Color</dt>
+	  <dd><%= @ropa.color.nombre %></dd>
+	  <dt>Talla</dt>
+	  <dd><%= @ropa.num_pie %></dd>
+	  <dt>Precio</dt>
+	  <dd><%= @ropa.precio %></dd>
+          <dt>Imagen</dt>
+	  <% if @ropa.imagen.exists? then %>
+    		<dd><%= image_tag @ropa.imagen.url(:medium) %></dd>
+ 	  <% else %>
+    		<p> No hay imagen disponible. </p>
+  	  <% end %>
+	</dl>
+<% else %>
+        <dl>
+	  <dt>Marca</dt>
+	  <dd><%= @ropa.marca.nombre %></dd>
+	  <dt>Modelo</dt>
+	  <dd><%= @ropa.modelo %></dd>
+	  <dt>Color</dt>
+	  <dd><%= @ropa.color.nombre %></dd>
+	  <dt>Talla</dt>
+	  <dd><%= @ropa.talla.nombre_euro %></dd>
+	  <dt>Precio</dt>
+	  <dd><%= @ropa.precio %></dd>
+          <dt>Imagen</dt>
+	  <% if @ropa.imagen.exists? then %>
+    		<dd><%= image_tag @ropa.imagen.url(:medium) %></dd>
+ 	  <% else %>
+    		<p> No hay imagen disponible. </p>
+  	  <% end %>
+	</dl>
+<% end %>
+
+
 <p>Find me in app/views/catalog/show.html.erb</p>
+
+

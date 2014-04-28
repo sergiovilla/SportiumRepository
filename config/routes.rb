@@ -9,20 +9,20 @@ Sportium::Application.routes.draw do
   get "catalog/show"
   get "catalog/search"
   get "catalog/latest"
+  match 'catalog/show/:id' => 'catalog#show'
+
 
   root :to => "about#index"
   
   #rutas no generadas por namespace
   get 'admin/ropas/new_ropa'
   get 'admin/ropas/new_zapatillas'
+
   
   namespace :admin do
-    resources :marcas, :tallas, :colors
+    resources :marcas, :tallas, :colors, :ropas
   end
 
-  namespace :admin do
-    resources :ropas, except: :new
-  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

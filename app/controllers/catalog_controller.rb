@@ -10,7 +10,7 @@ class CatalogController < ApplicationController
   	@page_title = 'Camisetas'
   end
 
-  def calzonas
+  def calz#encoding: utf-8onas
   	@calzonas = pagination('Calzonas')
   	@page_title = 'Calzonas'
   end
@@ -33,6 +33,11 @@ class CatalogController < ApplicationController
   def show
   	@ropa = Ropa.find(params[:id])
   	@page_title = @ropa.nombre
+	@tipo = @ropa.tipo
+	if @tipo  == 'Zapatillas'
+  		@tipoZapatillas = true
+  	else @tipoZapatillas = false
+  	end
   end
 
   def search
@@ -48,7 +53,7 @@ class CatalogController < ApplicationController
   	Ropa.paginate :page => params[:page], 
   				  :order => "ropas.id desc",
   				  :per_page => 5,
-  				  :conditions => ["tipo = #{tipo}"]
+  				  :conditions => ["tipo = '#{tipo}'"]
   end
   
   def get_tipos()
