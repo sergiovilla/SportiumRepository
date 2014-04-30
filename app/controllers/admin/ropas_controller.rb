@@ -73,6 +73,32 @@ class Admin::RopasController < ApplicationController
 
   def show
     @ropa = get_ropa(params[:id])
+    
+    if @ropa.tipo  == 'Zapatillas'
+  		@tipoZapatillas = true
+  	else @tipoZapatillas = false
+  	end
+  	if @ropa.deporte == '' or @ropa.deporte.nil?  then
+  		@deportenulo = true
+  	else @deportenulo = false
+  	end
+  	if @ropa.nom_equipo == '' or @ropa.nom_equipo.nil? then
+  		@equiponulo = true
+  	else @equiponulo = false
+  	end
+  	if @ropa.talla.nil? then
+  		@tallanula = true
+  	else @tallanula = false
+  	end
+  	if @ropa.color.nil? then
+  		@colornulo = true
+  	else @colornulo = false
+  	end
+  	if @ropa.imagen.exists? then
+  		@imagennula = false
+  	else @imagennula = true
+  	end
+  	
     @page_title = "#{@ropa.nombre}"
   end
 

@@ -1,5 +1,3 @@
-<p><%= link_to 'Últimos productos', :action => 'latest' %></p>
-
 <dl>
   <% for camiseta in @camisetas %>
   	<dt><%= image_tag camiseta.imagen.url(:medium) %></dt>

@@ -29,6 +29,7 @@
 		  </div>
 		</div>
 		
+		<% if !@deportenulo then %>
 		<div class="panel panel-primary">
 		  <div class="panel-heading">
 		    <h3 class="panel-title">Deporte</h3>
@@ -37,6 +38,7 @@
 		    <%= @ropa.deporte %>
 		  </div>
 		</div>
+		<% end %>
 		
 		<div class="panel panel-primary">
 		  <div class="panel-heading">
@@ -47,6 +49,7 @@
 		  </div>
 		</div>
 		
+		<% if !@equiponulo then %>
 		<div class="panel panel-primary">
 		  <div class="panel-heading">
 		    <h3 class="panel-title">Nombre del equipo</h3>
@@ -55,7 +58,9 @@
 		    <%= @ropa.nom_equipo %>
 		  </div>
 		</div>
+		<% end %>
 		
+		<% if @tipoZapatillas then %>
 		<div class="panel panel-primary">
 		  <div class="panel-heading">
 		    <h3 class="panel-title">Número de pie</h3>
@@ -64,6 +69,7 @@
 		    <%= @ropa.num_pie %>
 		  </div>
 		</div>
+		<% end %>
 		
 		<div class="panel panel-primary">
 		  <div class="panel-heading">
@@ -74,6 +80,7 @@
 		  </div>
 		</div>
 		
+		<% if !@tallanula then %>
 		<div class="panel panel-primary">
 		  <div class="panel-heading">
 		    <h3 class="panel-title">Talla</h3>
@@ -82,7 +89,9 @@
 		    <%= "#{@ropa.talla.nombre_euro} #{@ropa.talla.nombre_usa}"  %>
 		  </div>
 		</div>
+		<% end %>
 		
+		<% if !@colornulo then %>
 		<div class="panel panel-primary">
 		  <div class="panel-heading">
 		    <h3 class="panel-title">Color</h3>
@@ -91,18 +100,19 @@
 		    <%= @ropa.color.nombre %>
 		  </div>
 		</div>
+		<% end %>
 		
 		<div class="panel panel-primary">
 		  <div class="panel-heading">
 		    <h3 class="panel-title">Imagen</h3>
 		  </div>
-		  <% if @ropa.imagen.exists? then %>
+		  <% if @imagennula then %>
 		  <div class="panel-body">
-		    <%= image_tag @ropa.imagen.url(:thumb) %>
+		    <p> No hay imagen disponible. </p>
 		  </div>
 		  <% else %>
 		  <div class="panel-body">
-		    <p> No hay imagen disponible. </p>
+		    <%= image_tag @ropa.imagen.url(:thumb) %>
 		  </div>
 		  <% end %>
 		</div>
