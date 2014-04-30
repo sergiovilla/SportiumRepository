@@ -1,0 +1,13 @@
+<h3>Seleccione la marca que desee para ver sus productos</h3>
+<dl>
+  <% for marca in @marcas %>
+  	<dt><%= link_to :action => 'index_catalogo_marcas', :id => marca do %>
+	<%= image_tag marca.imagen.url(:medium) %>
+	<% end %>
+	</dt>
+    <dt><%= link_to marca.nombre, :action => 'index_catalogo_marcas', :id => marca %></dt>
+    <dd>País: <%= marca.pais %></dd>
+  <% end %>
+</dl>
+
+<%= will_paginate @marcas, :renderer => BootstrapPagination::Rails %>

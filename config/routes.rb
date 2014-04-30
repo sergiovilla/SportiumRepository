@@ -2,6 +2,8 @@ Sportium::Application.routes.draw do
 
   get "catalog/index"
   get "catalog/index_catalogo"
+  get "catalog/index_marcas"
+  get "catalog/index_catalogo_marcas"
   get "catalog/show"
   get "catalog/search"
   get "catalog/latest"

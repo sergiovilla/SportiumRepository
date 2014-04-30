@@ -8,6 +8,18 @@ class CatalogController < ApplicationController
   	@ropas = pagination(params[:tipo])
   	@page_title = 'Catálogo de ' + params[:tipo]
   end
+  
+  def index_marcas
+  	@marcas = pagination_marcas()
+  	@page_title = 'Catálogo de marcas'
+  end
+  
+  def index_catalogo_marcas
+  	@marca = Marca.find(params[:id])
+  	@ropas = pagination_ropas_marcas(@marca.id)
+  	@page_title = 'Catálogo de ' + @marca.nombre
+  	render 'index_catalogo'
+  end
 
   def show
   	@ropa = Ropa.find(params[:id])
@@ -35,7 +47,21 @@ class CatalogController < ApplicationController
   				  :conditions => ["tipo = '#{tipo}'"]
   end
   
+  def pagination_marcas()
+  	Marca.paginate :page => params[:page], 
+  				  :order => "marcas.id desc",
+  				  :per_page => 5
+  end
+  
+  def pagination_ropas_marcas(marca)
+  	Ropa.paginate :page => params[:page], 
+  				  :order => "ropas.id desc",
+  				  :per_page => 5,
+  				  :conditions => ["marca_id = '#{marca}'"]
+  end
+  
   def get_tipos()
     Ropa.select(:tipo).distinct;
   end
+  
 end
