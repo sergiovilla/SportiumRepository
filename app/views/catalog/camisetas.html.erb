@@ -1,9 +1,0 @@
-<dl>
-  <% for camiseta in @camisetas %>
-  	<dt><%= image_tag camiseta.imagen.url(:medium) %></dt>
-    <dt><%= link_to camiseta.nombre, :action => 'show', :id => camiseta %>
-    <dd>Precio: <%= sprintf("%.2f €", camiseta.precio) %></dd>
-  <% end %>
-</dl>
-
-<%= will_paginate @camisetas, :renderer => BootstrapPagination::Rails %>

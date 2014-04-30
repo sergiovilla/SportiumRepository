@@ -1,11 +1,7 @@
 Sportium::Application.routes.draw do
 
   get "catalog/index"
-  get "catalog/camisetas"
-  get "catalog/calzonas"
-  get "catalog/equipaciones"
-  get "catalog/zapatillas"
-  get "catalog/chandals"
+  get "catalog/index_catalogo"
   get "catalog/show"
   get "catalog/search"
   get "catalog/latest"

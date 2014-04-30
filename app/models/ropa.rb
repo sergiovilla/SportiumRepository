@@ -30,4 +30,9 @@ class Ropa < ActiveRecord::Base
     	tipo == 'Zapatillas'
     end
     
+    #método que devuelve la URL del ejemplo de imagen para el catálogo de cada tipo
+    def sampleURL()
+    	"/imagenesCatalogo/catalogo_#{tipo}"
+    end
+    
 end

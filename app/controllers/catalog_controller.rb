@@ -1,33 +1,12 @@
 #encoding: utf-8
 class CatalogController < ApplicationController
   def index
-  	@tipos = get_tipos()
   	@page_title = 'Catálogo de productos'
   end
 
-  def camisetas
-  	@camisetas = pagination('Camiseta')
-  	@page_title = 'Camisetas'
-  end
-
-  def calzonas
-  	@calzonas = pagination('Calzonas')
-  	@page_title = 'Calzonas'
-  end
-
-  def equipaciones
-  	@equipaciones = pagination('Equipación')
-  	@page_title = 'Equipaciones'
-  end
-
-  def zapatillas
-  	@zapatillas = pagination('Zapatillas')
-  	@page_title = 'Zapatillas'
-  end
-
-  def chandals
-  	@chandals = pagination('Chándal')
-  	@page_title = 'Chandals'
+  def index_catalogo
+  	@ropas = pagination(params[:tipo])
+  	@page_title = 'Catálogo de ' + params[:tipo]
   end
 
   def show

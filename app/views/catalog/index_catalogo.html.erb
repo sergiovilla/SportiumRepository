@@ -1,0 +1,12 @@
+<dl>
+  <% for ropa in @ropas %>
+  	<dt><%= link_to :action => 'show', :id => ropa do %>
+	<%= image_tag ropa.imagen.url(:medium) %>
+	<% end %>
+	</dt>
+    <dt><%= link_to ropa.nombre, :action => 'show', :id => ropa %>
+    <dd>Precio: <%= sprintf("%.2f €", ropa.precio) %></dd>
+  <% end %>
+</dl>
+
+<%= will_paginate @ropas, :renderer => BootstrapPagination::Rails %>

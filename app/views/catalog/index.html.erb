@@ -1,6 +1,39 @@
-<h1>CATÁLOGO DE PRODUCTOS</h1>
 <p>Seleccione el tipo producto que desea</p>
 
-<%= link_to '', :action => ''%>
+<dl>
+<dt><%= link_to :action => 'index_catalogo', :tipo => 'Camiseta' do %>
+	<%= image_tag '/imagenesCatalogo/catalogo_Camiseta.jpg', width: 150, height: 150 %>
+	<% end %>
+</dt>
+<dd><%= link_to 'Camisetas', :action => 'index_catalogo', :tipo => 'Camiseta' %></dd>
 
-<%= link_to 'Últimos productos', :action => 'latest' %></p>
+<dt><%= link_to :action => 'index_catalogo', :tipo => 'Calzonas' do %>
+	<%= image_tag '/imagenesCatalogo/catalogo_Calzonas.jpg', width: 150, height: 150 %>
+	<% end %>
+</dt>
+<dd><%= link_to 'Calzonas', :action => 'index_catalogo', :tipo => 'Calzonas' %></dd>
+
+<dt><%= link_to :action => 'index_catalogo', :tipo => 'Chándal' do %>
+	<%= image_tag '/imagenesCatalogo/catalogo_Chándal.jpg', width: 150, height: 150 %>
+	<% end %>
+</dt>
+<dd><%= link_to 'Chándals', :action => 'index_catalogo', :tipo => 'Chándal' %></dd>
+
+<dt><%= link_to :action => 'index_catalogo', :tipo => 'Equipación' do %>
+	<%= image_tag '/imagenesCatalogo/catalogo_Equipación.jpg', width: 150, height: 150 %>
+	<% end %>
+</dt>
+<dd><%= link_to 'Equipaciones', :action => 'index_catalogo', :tipo => 'Equipación' %></dd>
+
+<dt><%= link_to :action => 'index_catalogo', :tipo => 'Zapatillas' do %>
+	<%= image_tag '/imagenesCatalogo/catalogo_Zapatillas.jpg', width: 150, height: 150 %>
+	<% end %>
+</dt>
+<dd><%= link_to 'Zapatillas', :action => 'index_catalogo', :tipo => 'Zapatillas' %></dd>
+
+<dt><%= link_to :action => 'latest' do %>
+	<%= image_tag '/imagenesCatalogo/catalogo_novedades.png', width: 150, height: 150 %>
+	<% end %>
+</dt>
+<dd><%= link_to 'Últimos productos', :action => 'latest' %></p></dd>
+</dl>
