@@ -1,18 +1,41 @@
-<dl id = 'ropa'>
-  <% for ropa in @ropas %>
-    <dd><% if ropa.imagen.exists? then %>
-		  
-		  <%= image_tag ropa.imagen.url(:thumb) %>
-		  
-		  <% else %>
-		  
-		    <p> No hay imagen disponible. </p>
-		  
-		  <% end %>
+<% item_count = 0 %>
 
-    </dd>
-    <dt><%= link_to ropa.nombre, :action => 'show', :id => ropa %>
-    <dd>Precio: <%= sprintf("%.2f €", ropa.precio) %></dd>
-    
-    <% end %>
-</dl>
+<div class="row">
+  <div class="col-md-9">
+  	<div class="catalogo-container">
+  	
+  	  <% for ropa in @ropas %>
+  	  	  <% if item_count == 1 %>
+  	  	    <div class="row">
+  	  	  <% end %>
+	  	  <div class="col-md-3 ropa">
+	  	  	<div>
+	  	  	  <div class="ropa-imagen">
+	  	  	  	<%= link_to catalogo_show_path(ropa) do %>
+				  <%= image_tag ropa.imagen.url(:medium), :class => 'thumbnail' %>
+				<% end %>
+	  	  	  </div>
+	  	  	  <h5><%= link_to ropa.nombre, catalogo_show_path(ropa) %></h5>
+	  	  	  <div>
+	  	  	  	<span class="precio">
+	  	  	  		Precio: <%= sprintf("%.2f €", ropa.precio) %>
+	  	  	  	</span>
+	  	  	  </div>
+	  	  	</div>
+	  	  </div>
+	  	  <% if item_count == 3 then %>
+	  	  	<%= '</div>' %>
+	  	  	<% item_count = 1 %>
+	  	  <% else %>
+	  	  	<% item_count += 1 %>
+	  	  <% end %>
+  	  <% end %>
+
+  	  <% if item_count != 1 %>
+  	    </div>
+  	  <% end %>
+
+  	</div>
+  </div>
+</div>
+

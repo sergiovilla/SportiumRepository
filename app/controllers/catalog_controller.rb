@@ -5,17 +5,18 @@ class CatalogController < ApplicationController
   end
 
   def index_catalogo
-  	@ropas = pagination(params[:tipo])
-  	@page_title = 'Catálogo de ' + params[:tipo]
-  end
-  
-  def index_marcas
-  	@marcas = pagination_marcas()
-  	@page_title = 'Catálogo de marcas'
+    if params[:tipo].eql? 'Marcas'
+        @marcas = pagination_marcas()
+        @page_title = 'Catálogo de marcas'
+        render 'index_marcas'
+    else
+      	@ropas = pagination(params[:tipo])
+      	@page_title = 'Catálogo de ' + params[:tipo]
+    end
   end
   
   def index_catalogo_marcas
-  	@marca = Marca.find(params[:id])
+  	@marca = Marca.where(nombre: params[:nombre]).first
   	@ropas = pagination_ropas_marcas(@marca.id)
   	@page_title = 'Catálogo de ' + @marca.nombre
   	render 'index_catalogo'
@@ -25,9 +26,10 @@ class CatalogController < ApplicationController
   	@ropa = Ropa.find(params[:id])
   	@page_title = @ropa.nombre
 	@tipo = @ropa.tipo
-	if @tipo  == 'Zapatillas'
+	if @tipo.eql? 'Zapatillas'
   		@tipoZapatillas = true
-  	else @tipoZapatillas = false
+  	else 
+        @tipoZapatillas = false
   	end
   end
 
@@ -35,7 +37,7 @@ class CatalogController < ApplicationController
   end
 
   def latest
-  	@ropas = Ropa.latest 5 # invoca "lastest" method para obtener las 5 ultimas ropas
+  	@ropas = Ropa.latest 6 # invoca "lastest" method para obtener las 6 últimas ropas
     @page_title = 'Últimos artículos'
   end
 

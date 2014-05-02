@@ -14,5 +14,5 @@
 	</div>
 </div>
 
-<%= link_to 'Editar', { :action => 'edit', :id => @talla }, :class => 'btn btn-success' %>
-<%= link_to 'Volver', { :action => 'index' }, :class => 'btn btn-default btn-sm' %>
+<%= link_to 'Editar', edit_admin_talla_path(@talla), :class => 'btn btn-success' %>
+<%= link_to 'Volver', admin_tallas_path, :class => 'btn btn-default btn-sm' %>

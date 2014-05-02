@@ -1,48 +1,68 @@
-<h1>Catalogo Ropa</h1>
+<div class="row">
+  <div class="col-md-4">
+    <div class="row">
+	  <div class="col-md-4">
+	    <% if @ropa.imagen.exists? then %>
+    	  <%= image_tag @ropa.imagen.url(:large) %></dd>
+ 	    <% else %>
+    	  <p> No hay imagen disponible. </p>
+  	    <% end %>
+	  </div>
+	</div> <!-- Imagen -->
+  </div>
 
+  <div class="col-md-8 pull-right">
+  	<div class="row">
+  	  <div class="col-md-8">
+  	  	<div class="page-header">
+  	  	  <h2>
+  	  	    <%= @ropa.modelo %>
+  	  	    <span class="pull-right">
+  	  	  	  <small>Precio: </small>
+  	  	  	  <%= sprintf("%.2f €", @ropa.precio) %>
+  	  	    </span>
+  	  	  </h2>
+  	  	</div>
+  	  </div>
+  	</div> <!-- Modelo y precio -->
 
+  	<div class="row">
+  	  <div class="col-md-8">
+  	  	<div class="product-show">
+  	  	  <div class="row">
+	  	  	  <div class="col-md-8 col-md-offset-1">
+	  	  		<b>Marca: </b> 
+	  	  		<%= link_to @ropa.marca.nombre, catalogo_marca_path(@ropa.marca.nombre) %>
+	  	  		<br>
+	  	  		<!-- Deporte -->
+	  	  		<% if @ropa.deporte then %>
+	  	  		  <b>Deporte: </b><%= @ropa.deporte %>
+	  	  		<% end %> 
+	  	  		<br>
+	  	  		<!-- Deporte -->
+	  	  		<% if @ropa.nom_equipo then %>
+	  	  		  <b>Equipo: </b><%= @ropa.nom_equipo %>
+	  	  		<% end %> 
+	  	  		<br>
+	  	  		<!-- Color -->
+	  	  		<% if @ropa.color then %>
+	  	  		  <b>Color: </b><%= @ropa.color.nombre %>
+	  	  		<% end %> 
+	  	  		<br>
+	  	  		<!-- Pie o talla -->
+	  	  		<%if @tipoZapatillas %>
+	  	  		  <b>Pie: </b><%= @ropa.num_pie %>
+	  	  		<% else %>
+	  	  		  <b>Talla EU: </b><%= @ropa.talla.nombre_euro %>
+	  	  		  <br>
+	  	  		  <b>Talla USA: </b><%= @ropa.talla.nombre_usa %>
+				<% end %>
+	  	  	  </div>
+  	  	  </div>
+  	  	</div>
+  	  </div>
+  	</div> <!-- Detalles -->
+  </div>
 
-<% if @tipoZapatillas %>
-	<dl>
-	  <dt>Marca</dt>
-	  <dd><%= @ropa.marca.nombre %></dd>
-          <dt>Modelo</dt>
-	  <dd><%= @ropa.modelo %></dd>
-	  <dt>Color</dt>
-	  <dd><%= @ropa.color.nombre %></dd>
-	  <dt>Talla</dt>
-	  <dd><%= @ropa.num_pie %></dd>
-	  <dt>Precio</dt>
-	  <dd><%= @ropa.precio %></dd>
-          <dt>Imagen</dt>
-	  <% if @ropa.imagen.exists? then %>
-    		<dd><%= image_tag @ropa.imagen.url(:medium) %></dd>
- 	  <% else %>
-    		<p> No hay imagen disponible. </p>
-  	  <% end %>
-	</dl>
-<% else %>
-        <dl>
-	  <dt>Marca</dt>
-	  <dd><%= @ropa.marca.nombre %></dd>
-	  <dt>Modelo</dt>
-	  <dd><%= @ropa.modelo %></dd>
-	  <dt>Color</dt>
-	  <dd><%= @ropa.color.nombre %></dd>
-	  <dt>Talla</dt>
-	  <dd><%= @ropa.talla.nombre_euro %></dd>
-	  <dt>Precio</dt>
-	  <dd><%= @ropa.precio %></dd>
-          <dt>Imagen</dt>
-	  <% if @ropa.imagen.exists? then %>
-    		<dd><%= image_tag @ropa.imagen.url(:medium) %></dd>
- 	  <% else %>
-    		<p> No hay imagen disponible. </p>
-  	  <% end %>
-	</dl>
-<% end %>
-
-
-<p>Find me in app/views/catalog/show.html.erb</p>
-
+</div>
 

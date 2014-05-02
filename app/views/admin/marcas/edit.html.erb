@@ -9,5 +9,5 @@
 </div>
 
 <br>
-<%= link_to 'Mostrar', { :action => 'show', :id => @marca }, :class => 'btn btn-success' %>
-<%= link_to 'Volver', { :action => 'index' }, :class => 'btn btn-default btn-sm' %>
+<%= link_to 'Mostrar', admin_marca_path(@marca), :class => 'btn btn-success' %>
+<%= link_to 'Volver', admin_marcas_path, :class => 'btn btn-default btn-sm' %>

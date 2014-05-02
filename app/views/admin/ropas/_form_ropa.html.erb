@@ -31,17 +31,17 @@
   
   <div class="form-group">
   	<label for="ropa_marca">Marca</label>
-  	<%= collection_select :ropa, :marca_id, @marcas, :id, :nombre %></p>
+  	<%= collection_select :ropa, :marca_id, @marcas, :id, :nombre %>
   </div>
   
   <div class="form-group">
   	<label for="ropa_talla">Talla</label>
-  	<%= collection_select :ropa, :talla_id, @tallas, :id, :nombre_usa %></p>
+  	<%= collection_select :ropa, :talla_id, @tallas, :id, :nombre_usa %>
   </div>
   
   <div class="form-group">
   	<label for="ropa_color">Color</label>
-  	<%= collection_select :ropa, :color_id, @colores, :id, :nombre %></p>
+  	<%= collection_select :ropa, :color_id, @colores, :id, :nombre %>
   </div>
 
   <div class="form-group">
@@ -55,6 +55,6 @@
   <% else %>
     <p> No hay imagen disponible. </p>
   <% end %>
-  <p><label for="ropa_imagen">Imagen</label><br/>
-  <%= file_field 'ropa', :imagen %></p>
+  <label for="ropa_imagen">Imagen</label><br/>
+  <%= file_field 'ropa', :imagen %>
   </div>

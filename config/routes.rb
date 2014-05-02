@@ -1,26 +1,20 @@
 Sportium::Application.routes.draw do
 
-  get "catalog/index"
-  get "catalog/index_catalogo"
-  get "catalog/index_marcas"
-  get "catalog/index_catalogo_marcas"
-  get "catalog/show"
+  root :to => "about#index"
+
+  match 'catalogo' => 'catalog#index'
+  match 'catalogo/:tipo' => 'catalog#index_catalogo', as: 'catalogo_tipo' 
+  match 'catalogo/Marcas/:nombre' => 'catalog#index_catalogo_marcas', as: 'catalogo_marca'
+  match 'catalogo/show/:id' => 'catalog#show', as: 'catalogo_show'
+
   get "catalog/search"
   get "catalog/latest"
-  match 'catalog/show/:id' => 'catalog#show'
 
-
-  root :to => "about#index"
-  
-  #rutas no generadas por namespace
-  get 'admin/ropas/new_ropa'
-  get 'admin/ropas/new_zapatillas'
-
-  
   namespace :admin do
     resources :marcas, :tallas, :colors, :ropas
   end
 
+  match 'admin/ropas/new/:tipo' => 'admin/ropas#new', as: 'new_admin_ropa_tipo'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

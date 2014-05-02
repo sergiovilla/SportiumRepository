@@ -1,13 +1,44 @@
 <h3>Seleccione la marca que desee para ver sus productos</h3>
-<dl>
-  <% for marca in @marcas %>
-  	<dt><%= link_to :action => 'index_catalogo_marcas', :id => marca do %>
-	<%= image_tag marca.imagen.url(:medium) %>
-	<% end %>
-	</dt>
-    <dt><%= link_to marca.nombre, :action => 'index_catalogo_marcas', :id => marca %></dt>
-    <dd>País: <%= marca.pais %></dd>
-  <% end %>
-</dl>
+
+<% item_count = 0 %>
+
+<div class="row">
+  <div class="col-md-9">
+  	<div class="catalogo-container">
+  	
+  	  <% for marca in @marcas %>
+  	  	  <% if item_count == 1 %>
+  	  	    <div class="row">
+  	  	  <% end %>
+	  	  <div class="col-md-3 ropa">
+	  	  	<div>
+	  	  	  <div class="ropa-imagen">
+	  	  	  	<%= link_to catalogo_marca_path(marca.nombre) do %>
+				  <%= image_tag marca.imagen.url(:medium), :class => 'thumbnail' %>
+				<% end %>
+	  	  	  </div>
+	  	  	  <h5><%= link_to marca.nombre, catalogo_marca_path(marca.nombre) %></h5>
+	  	  	  <div>
+	  	  	  	<span class="precio">
+	  	  	  		País: <%= marca.pais %>
+	  	  	  	</span>
+	  	  	  </div>
+	  	  	</div>
+	  	  </div>
+	  	  <% if item_count == 3 then %>
+	  	  	</div>
+	  	  	<% item_count = 1 %>
+	  	  <% else %>
+	  	  	<% item_count += 1 %>
+	  	  <% end %>
+  	  <% end %>
+
+  	  <% if item_count != 1 %>
+  	    </div>
+  	  <% end %>
+
+  	</div>
+  </div>
+</div>
 
 <%= will_paginate @marcas, :renderer => BootstrapPagination::Rails %>

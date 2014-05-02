@@ -1,28 +1,19 @@
 #encoding: utf-8
 class Admin::RopasController < ApplicationController
-  def new
-    @page_title = 'Añadir nueva Ropa'
-  end
 
-  def new_ropa
-  	@ropa = Ropa.new
-  	@tipo = params[:tipo]
-  	@marcas = get_all_marcas()
-  	@colores = get_all_colors()
-  	@tallas = get_all_tallas()
-  	if @tipo.nil?
-  		@page_title = "Errores de formulario"
-  	else
-  		@page_title = "Añadiendo #{@tipo}"
+  def new
+    @tipo = params[:tipo]
+    @page_title = @tipo.nil? ? 'Añadiendo nueva ropa' : "Añadiendo #{@tipo}"
+    
+    unless @tipo.nil?
+    	@ropa = Ropa.new
+    	@marcas = get_all_marcas()
+    	@colores = get_all_colors()
+    	unless @tipo.eql? 'Zapatillas'
+        @tallas = get_all_tallas()
+      end
+      render 'new_ropa'
     end
-  end
-  
-  def new_zapatillas
-  	@ropa = Ropa.new
-  	@tipo = 'Zapatillas'
-  	@marcas = get_all_marcas()
-  	@colores = get_all_colors()
-  	@page_title = 'Añadiendo nuevas zapatillas'
   end
   
   def create
@@ -32,11 +23,7 @@ class Admin::RopasController < ApplicationController
       redirect_to :action => 'index'
     else
       flash[:error] = @ropa.errors.full_messages
-      if @ropa.tipo == 'Zapatillas'
-      	redirect_to :action => 'new_zapatillas'
-      else
-      	redirect_to :action => 'new_ropa'
-      end
+     	redirect_to :action => 'new_ropa'
     end
   end
 
@@ -45,10 +32,11 @@ class Admin::RopasController < ApplicationController
   	@marcas = get_all_marcas()
   	@colores = get_all_colors()
   	@tallas = get_all_tallas()
-  	@tipo = @ropa.tipo
-  	if @tipo  == 'Zapatillas'
+    @tipo = @ropa.tipo
+  	if @ropa.tipo.eql? 'Zapatillas'
   		@tipoZapatillas = true
-  	else @tipoZapatillas = false
+  	else 
+      @tipoZapatillas = false
   	end
     @page_title = "Editando #{@ropa.nombre} "
   end
@@ -76,34 +64,45 @@ class Admin::RopasController < ApplicationController
     
     if @ropa.tipo  == 'Zapatillas'
   		@tipoZapatillas = true
-  	else @tipoZapatillas = false
+  	else 
+      @tipoZapatillas = false
   	end
+
   	if @ropa.deporte == '' or @ropa.deporte.nil?  then
   		@deportenulo = true
-  	else @deportenulo = false
+  	else
+      @deportenulo = false
   	end
-  	if @ropa.nom_equipo == '' or @ropa.nom_equipo.nil? then
+  	
+    if @ropa.nom_equipo == '' or @ropa.nom_equipo.nil? then
   		@equiponulo = true
-  	else @equiponulo = false
+  	else
+      @equiponulo = false
   	end
-  	if @ropa.talla.nil? then
+  	
+    if @ropa.talla.nil? then
   		@tallanula = true
-  	else @tallanula = false
+  	else
+      @tallanula = false
   	end
-  	if @ropa.color.nil? then
+  	
+    if @ropa.color.nil? then
   		@colornulo = true
-  	else @colornulo = false
+  	else
+      @colornulo = false
   	end
-  	if @ropa.imagen.exists? then
+  	
+    if @ropa.imagen.exists? then
   		@imagennula = false
-  	else @imagennula = true
+  	else
+      @imagennula = true
   	end
   	
     @page_title = "#{@ropa.nombre}"
   end
 
   def index
-    @ropas = get_all_ropas(params[:id])
+    @ropas = get_all_ropas()
     @page_title = 'Listado de Ropas'
   end
 
@@ -112,7 +111,7 @@ class Admin::RopasController < ApplicationController
     Ropa.find(id);
   end
   
-  def get_all_ropas(id)
+  def get_all_ropas
   	Ropa.all
   end
   

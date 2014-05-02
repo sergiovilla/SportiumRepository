@@ -1,46 +1,64 @@
-<p>Seleccione el tipo producto que desea</p>
+<h3>Seleccione el tipo producto que desea</h3>
 
-<dl>
-<dt><%= link_to :action => 'index_catalogo', :tipo => 'Camiseta' do %>
-	<%= image_tag '/imagenesCatalogo/catalogo_Camiseta.jpg', width: 150, height: 150 %>
-	<% end %>
-</dt>
-<dd><%= link_to 'Camisetas', :action => 'index_catalogo', :tipo => 'Camiseta' %></dd>
+<div class="row">
+  <div class="col-md-9">
+  	<div class="catalogo-container">
+	  
+	  <div class="row">
+	  	<div class="col-md-3 ropa">
+		  <%= link_to catalogo_tipo_path('Camiseta') do %>
+			<%= image_tag '/imagenesCatalogo/catalogo_Camiseta.jpg', :class => 'thumbnail' %>
+		  <% end %>
+		  <h4><%= link_to 'Camisetas', catalogo_tipo_path('Camiseta') %></h4>
+		</div>
 
-<dt><%= link_to :action => 'index_catalogo', :tipo => 'Calzonas' do %>
-	<%= image_tag '/imagenesCatalogo/catalogo_Calzonas.jpg', width: 150, height: 150 %>
-	<% end %>
-</dt>
-<dd><%= link_to 'Calzonas', :action => 'index_catalogo', :tipo => 'Calzonas' %></dd>
+		<div class="col-md-3 ropa">
+		  <%= link_to catalogo_tipo_path('Calzonas') do %>
+			<%= image_tag '/imagenesCatalogo/catalogo_Calzonas.jpg', :class => 'thumbnail' %>
+		  <% end %>
+		  <h4><%= link_to 'Calzonas', catalogo_tipo_path('Calzonas') %></h4>
+		</div>
 
-<dt><%= link_to :action => 'index_catalogo', :tipo => 'Chándal' do %>
-	<%= image_tag '/imagenesCatalogo/catalogo_Chándal.jpg', width: 150, height: 150 %>
-	<% end %>
-</dt>
-<dd><%= link_to 'Chándals', :action => 'index_catalogo', :tipo => 'Chándal' %></dd>
+		<div class="col-md-3 ropa">
+		  <%= link_to catalogo_tipo_path('Chándal') do %>
+			<%= image_tag '/imagenesCatalogo/catalogo_Chándal.jpg', :class => 'thumbnail' %>
+		  <% end %>
+		  <h4><%= link_to 'Chándals', catalogo_tipo_path('Chándal') %></h4>
+	    </div>
+	  </div>
 
-<dt><%= link_to :action => 'index_catalogo', :tipo => 'Equipación' do %>
-	<%= image_tag '/imagenesCatalogo/catalogo_Equipación.jpg', width: 150, height: 150 %>
-	<% end %>
-</dt>
-<dd><%= link_to 'Equipaciones', :action => 'index_catalogo', :tipo => 'Equipación' %></dd>
+	  <div class="row">
+	  	<div class="col-md-3 ropa">
+	  	  <%= link_to catalogo_tipo_path('Equipación') do %>
+			<%= image_tag '/imagenesCatalogo/catalogo_Equipación.jpg', :class => 'thumbnail' %>
+		  <% end %>
+		  <h4><%= link_to 'Equipaciones', catalogo_tipo_path('Equipación') %></h4>
+	  	</div>
 
-<dt><%= link_to :action => 'index_catalogo', :tipo => 'Zapatillas' do %>
-	<%= image_tag '/imagenesCatalogo/catalogo_Zapatillas.jpg', width: 150, height: 150 %>
-	<% end %>
-</dt>
-<dd><%= link_to 'Zapatillas', :action => 'index_catalogo', :tipo => 'Zapatillas' %></dd>
+	  	<div class="col-md-3 ropa">
+	  	  <%= link_to catalogo_tipo_path('Zapatillas') do %>
+			<%= image_tag '/imagenesCatalogo/catalogo_Zapatillas.jpg', :class => 'thumbnail' %>
+		  <% end %>
+		  <h4><%= link_to 'Zapatillas', catalogo_tipo_path('Zapatillas') %></h4>
+	  	</div>
 
-<dt><%= link_to :action => 'latest' do %>
-	<%= image_tag '/imagenesCatalogo/catalogo_novedades.png', width: 150, height: 150 %>
-	<% end %>
-</dt>
-<dd><%= link_to 'Últimos productos', :action => 'latest' %></p></dd>
-</dl>
+	  	<div class="col-md-3 ropa">
+	  	  <%= link_to catalog_latest_path do %>
+			<%= image_tag '/imagenesCatalogo/catalogo_novedades.png', :class => 'thumbnail' %>
+		  <% end %>
+		  <h4><%= link_to 'Últimos productos', catalog_latest_path %></h4>
+		</div>
+	  </div>
 
-<dt><%= link_to :action => 'index_marcas' do %>
-	<%= image_tag '/imagenesCatalogo/catalogo_marcas.jpg', width: 150, height: 150 %>
-	<% end %>
-</dt>
-<dd><%= link_to 'Marcas', :action => 'index_marcas' %></p></dd>
-</dl>
+	  <div class="row">
+	  	<div class="col-md-3 col-md-offset-3 ropa">
+		  <%= link_to catalogo_tipo_path('Marcas') do %>
+			<%= image_tag '/imagenesCatalogo/catalogo_marcas.jpg', :class => 'thumbnail' %>
+		  <% end %>
+		  <h4><%= link_to 'Marcas', catalogo_tipo_path('Marcas') %></h4>
+	  	</div>
+	  </div>
+
+  	</div>
+  </div>
+</div>
