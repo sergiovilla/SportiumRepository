@@ -1,4 +1,5 @@
-require 'test_helper'
+#encoding: utf-8
+require File.dirname(__FILE__) + '/../test_helper'
 
 class CatalogControllerTest < ActionController::TestCase
   fixtures :ropas, :colors, :tallas, :marcas
