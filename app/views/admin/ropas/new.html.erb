@@ -1,14 +1,50 @@
 <h1>Crear nuevo producto de ropa</h1>
 <p>Seleccione el tipo de ropa que desee añadir</p>
+	  
+	  <br><br><br>
+	  <div class="row">
+	  	<div class="col-md-6">
+		  	<%= link_to new_admin_ropa_tipo_path('Camiseta') do %>
+				<%= image_tag '/imagenesCatalogo/catalogo_Camiseta.jpg', :class => 'adminthumb' %>
+		  	<% end %>
+		  	<%= link_to 'Nueva camiseta', new_admin_ropa_tipo_path('Camiseta'), :class => 'btn btn-default btn-sm' %>
+		</div>
 
-<%= link_to 'Camiseta', new_admin_ropa_tipo_path('Camiseta'), :class => 'btn btn-default btn-sm' %>
-<br>
-<%= link_to 'Calzonas', new_admin_ropa_tipo_path('Calzonas'), :class => 'btn btn-default btn-sm' %>
-<br>
-<%= link_to 'Equipación', new_admin_ropa_tipo_path('Equipación'), :class => 'btn btn-default btn-sm' %>
-<br>
-<%= link_to 'Chándal', new_admin_ropa_tipo_path('Chándal'), :class => 'btn btn-default btn-sm' %>
-<br>
-<%= link_to 'Zapatillas', new_admin_ropa_tipo_path('Zapatillas'), :class => 'btn btn-default btn-sm' %>
+		<div class="col-md-6">		  
+			<%= link_to new_admin_ropa_tipo_path('Calzonas') do %>
+				<%= image_tag '/imagenesCatalogo/catalogo_Calzonas.jpg', :class => 'adminthumb' %>
+			<% end %>
+			<%= link_to 'Nuevas calzonas', new_admin_ropa_tipo_path('Calzonas'), :class => 'btn btn-default btn-sm' %>
+		</div>
+	  </div>
+
+	  <br><br>
+	  <div class="row">
+	  	<div class="col-md-6">
+	  	  	<%= link_to new_admin_ropa_tipo_path('Chándal') do %>
+				<%= image_tag '/imagenesCatalogo/catalogo_Chándal.jpg', :class => 'adminthumb' %>
+		 	<% end %>
+			<%= link_to 'Nuevo chándal', new_admin_ropa_tipo_path('Chándal'), :class => 'btn btn-default btn-sm' %>
+	  	</div>
+
+	  	<div class="col-md-6">
+			<%= link_to new_admin_ropa_tipo_path('Zapatillas') do %>
+				<%= image_tag '/imagenesCatalogo/catalogo_Zapatillas.jpg', :class => 'adminthumb' %>
+			<% end %>
+			<%= link_to 'Nuevas zapatillas', new_admin_ropa_tipo_path('Zapatillas'), :class => 'btn btn-default btn-sm' %>
+	  	</div>
+	  </div>
+	  
+	  <br><br>
+	  <div class="row">
+	  	<div class="col-md-6">
+		  	<%= link_to new_admin_ropa_tipo_path('Equipación') do %>
+				<%= image_tag '/imagenesCatalogo/catalogo_Equipación.jpg', :class => 'adminthumb' %>
+			<% end %>
+			<%= link_to 'Nueva equipación', new_admin_ropa_tipo_path('Equipación'), :class => 'btn btn-default btn-sm' %>
+	    </div>
+	  </div>
+
+
 <br><br>
-<%= link_to 'Back', admin_ropas_path, :class => 'btn btn-default btn-sm' %>
+<%= link_to 'Atrás', admin_ropas_path, :class => 'btn btn-default btn-sm' %>

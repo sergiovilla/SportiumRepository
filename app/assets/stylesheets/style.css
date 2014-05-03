@@ -123,6 +123,12 @@ img.responsiveImage
   width:100%;
 }
 
+.adminthumb {
+  max-height:150px;
+  display:inline;
+  margin:auto;
+}
+
 .ropa .thumbnail {
   height:150px;
   vertical-align:middle;
@@ -145,7 +151,7 @@ img.responsiveImage
 
 #shopping_cart {
   border-left: 3px solid #666;
-  background: #aaa;
+  background:  #E0E0E0;
   position: fixed;
   bottom: 0;
   right: 0;

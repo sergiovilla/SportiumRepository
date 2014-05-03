@@ -10,9 +10,9 @@ class Admin::RopasController < ApplicationController
     	@marcas = get_all_marcas()
     	@colores = get_all_colors()
     	unless @tipo.eql? 'Zapatillas'
-        @tallas = get_all_tallas()
-      end
-      render 'new_ropa'
+        	@tallas = get_all_tallas()
+      	end
+      	render 'new_ropa'
     end
   end
   
