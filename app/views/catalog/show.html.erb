@@ -57,6 +57,8 @@
 	  	  		  <br>
 	  	  		  <b>Talla USA: </b><%= @ropa.talla.nombre_usa %>
 				<% end %>
+				<br><br>
+				<%= link_to 'Añadir al carrito', { :controller => 'cart', :action => 'add', :id => @ropa}, :class => 'btn btn-primary' %>
 	  	  	  </div>
   	  	  </div>
   	  	</div>

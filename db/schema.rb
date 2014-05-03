@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140421172509) do
+ActiveRecord::Schema.define(:version => 20140502182336) do
+
+  create_table "cart_items", :force => true do |t|
+    t.integer  "ropa_id"
+    t.integer  "cart_id"
+    t.float    "precio"
+    t.integer  "cantidad"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "carts", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "colors", :force => true do |t|
     t.string "nombre"

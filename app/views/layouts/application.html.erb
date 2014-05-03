@@ -13,11 +13,9 @@
 	    <h3 class="text-muted">Sportium&trade;</h3>
 	      <ul class="nav nav-justified">
 	        <li id="inicio"><%= link_to 'Inicio', root_path %></li>
-	        <li id="marcas"><a href="#">Marcas</a></li>
-	        <li id="camisetas"><a href="#">Camisetas</a></li>
-	        <li id="calzonas"><a href="#">Calzonas</a></li>
-	        <li id="equip"><a href="#">Equipaciones</a></li>
-	        <li id="zapatillas"><a href="#">Zapatillas</a></li>
+	        <li id="catalogo"><%= link_to 'Catálogo', catalogo_path %></li>
+	        <li id="marcas"><%= link_to 'Marcas', catalogo_tipo_path('Marcas') %></li>
+	        <li id="about"><%= link_to 'About', root_path %></li>
 	      </ul>
 	    </div>
     </div>
@@ -27,17 +25,32 @@
 	<h2><%= @page_title %></h2>
 
 	<% flash.each do |nivel, msg| %>
-	<div class="<%= flash_class(nivel) %>">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    	<% if nivel.eql? :error %>
-    		<h3><%= pluralize(msg.count, "error", "errores") %></h3>
-    		<ul><% msg.each do |razon| %>
-        	<li><%= razon %></li>
-      	<% end %>
-    		</ul>
-    	<% else %>
-    		<%= msg %>
-    	<% end %>
+    <% unless nivel.eql? :cart_notice %>
+    	<div class="<%= flash_class(nivel) %>">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        	<% if nivel.eql? :error %>
+        		<h3><%= pluralize(msg.count, "error", "errores") %></h3>
+        		<ul><% msg.each do |razon| %>
+            	<li><%= razon %></li>
+          	  <% end %>
+        		</ul>
+        	<% else %>
+        		<%= msg %>
+        	<% end %>
+      </div>
+      <% end %>
+  <% end %>
+
+  <% if @cart %>
+    <script>
+      $('body').css("margin-right", "180px");
+    </script>
+    <div class="row">
+      <div class="col-md-3 col-md-offset-8" style="position: fixed;">
+        <div id="shopping_cart">
+          <%= render :partial => 'cart/cart' %>
+        </div>
+      </div>
     </div>
   <% end %>
 

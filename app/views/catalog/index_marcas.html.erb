@@ -1,14 +1,15 @@
 <h3>Seleccione la marca que desee para ver sus productos</h3>
+<br>
 
 <% item_count = 0 %>
 
 <div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 col-md-offset-2">
   	<div class="catalogo-container">
   	
   	  <% for marca in @marcas %>
   	  	  <% if item_count == 1 %>
-  	  	    <div class="row">
+  	  	    <div class="row" style="margin-top: 20px;">
   	  	  <% end %>
 	  	  <div class="col-md-3 ropa">
 	  	  	<div>
@@ -41,4 +42,10 @@
   </div>
 </div>
 
-<%= will_paginate @marcas, :renderer => BootstrapPagination::Rails %>
+<div class="text-center">
+  <%= will_paginate @marcas, :renderer => BootstrapPagination::Rails %>
+</div>
+
+<script>
+	$('#marcas').addClass('active');
+</script>

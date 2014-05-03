@@ -2,17 +2,17 @@ class Ropa < ActiveRecord::Base
 	belongs_to :marca
 	belongs_to :color
 	belongs_to :talla
+	has_many :cart_items
+	has_many :carts, :through => :cart_items
 	
 	has_attached_file :imagen, :styles => { :large => "500x500>", :medium => "300x300>", :thumb => "100x100>"}
 	validates_attachment_content_type :imagen, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 
-	validates :marca, :presence => true
 	validates_associated :marca
-
 	validates_associated :color
-
 	validates_associated :talla
-	
+
+	validates :marca, :presence => true	
 	validates :tipo, :presence => true
 	validates :nombre, :presence => true
 	validates :precio, :presence => true,  numericality: true

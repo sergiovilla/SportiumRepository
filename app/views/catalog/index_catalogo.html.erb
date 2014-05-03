@@ -4,4 +4,10 @@
 
 <%= render :partial => "ropa" %>
 
-<%= will_paginate @ropas, :renderer => BootstrapPagination::Rails %>
+<div class="text-center">
+  <%= will_paginate @ropas, :renderer => BootstrapPagination::Rails %>
+</div>
+
+<script>
+	$('#catalogo').addClass('active');
+</script>

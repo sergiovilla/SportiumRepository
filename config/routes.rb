@@ -16,6 +16,13 @@ Sportium::Application.routes.draw do
 
   match 'admin/ropas/new/:tipo' => 'admin/ropas#new', as: 'new_admin_ropa_tipo'
 
+  get 'cart/add'
+  post 'cart/add'
+  get 'cart/remove'
+  post 'cart/remove'
+  get 'cart/clear'
+  post 'cart/clear'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

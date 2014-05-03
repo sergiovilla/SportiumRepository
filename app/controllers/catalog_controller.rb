@@ -1,5 +1,7 @@
 #encoding: utf-8
 class CatalogController < ApplicationController
+  before_filter :initialize_cart, :except => [:show, :latest]
+  
   def index
   	@page_title = 'Catálogo de productos'
   end
@@ -25,8 +27,8 @@ class CatalogController < ApplicationController
   def show
   	@ropa = Ropa.find(params[:id])
   	@page_title = @ropa.nombre
-	@tipo = @ropa.tipo
-	if @tipo.eql? 'Zapatillas'
+  	@tipo = @ropa.tipo
+  	if @tipo.eql? 'Zapatillas'
   		@tipoZapatillas = true
   	else 
         @tipoZapatillas = false
@@ -45,20 +47,20 @@ class CatalogController < ApplicationController
   def pagination(tipo)
   	Ropa.paginate :page => params[:page], 
   				  :order => "ropas.id desc",
-  				  :per_page => 5,
+  				  :per_page => 6,
   				  :conditions => ["tipo = '#{tipo}'"]
   end
   
   def pagination_marcas()
   	Marca.paginate :page => params[:page], 
   				  :order => "marcas.id desc",
-  				  :per_page => 5
+  				  :per_page => 6
   end
   
   def pagination_ropas_marcas(marca)
   	Ropa.paginate :page => params[:page], 
   				  :order => "ropas.id desc",
-  				  :per_page => 5,
+  				  :per_page => 6,
   				  :conditions => ["marca_id = '#{marca}'"]
   end
   

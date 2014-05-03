@@ -1,0 +1,9 @@
+<strong>Por favor confirme que desea eliminar 1 <em><%= @ropa.nombre %></em> de su carrito.</strong>
+<br><br>
+<div style="float: left; width: auto;">
+  <%= link_to 'Cancelar', catalogo_path, :class => 'btn btn-danger' %> &nbsp;
+</div>
+<div style="float: left; width: auto;">
+  <%= button_to 'Confirmar', { :action => 'remove', :id => params[:id] }, :class => 'btn btn-success' %>
+</div>
+<br>
