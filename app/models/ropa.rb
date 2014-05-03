@@ -14,7 +14,7 @@ class Ropa < ActiveRecord::Base
 	validates_associated :talla
 	
 	validates :tipo, :presence => true
-	validates :nombre, :presence => true, :uniqueness => true
+	validates :nombre, :presence => true
 	validates :precio, :presence => true,  numericality: true
 	validates :modelo, :presence => true
 	validates :num_pie, :presence => true, :if => :tipoZapatillas?, :length => { :is => 2 }, numericality: { only_integer: true }
