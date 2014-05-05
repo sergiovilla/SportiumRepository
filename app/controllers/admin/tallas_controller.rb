@@ -1,5 +1,5 @@
 #encoding: utf-8
-class Admin::TallasController < ApplicationController
+class Admin::TallasController < Admin::AuthenticatedController
   def new
     @talla = Talla.new
     @page_title = 'Añadir nueva Talla'
