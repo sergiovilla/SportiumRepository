@@ -1,0 +1,11 @@
+$("#shopping_cart").prepend("<%=j render :partial => 'cart_notice' %>");
+
+<% if @cart.ropas.include?(@ropa) %>
+	$("#cart_item_<%=j "#{@ropa.id}" %>").html("<%=j render :partial => 'item', :object => @item %>");
+	$("#cart_item_<%=j "#{@ropa.id}" %>").effect("highlight", { color: "#aaaaaa"}, 3000);
+<% else %>	
+	$("#cart_item_<%=j "#{@ropa.id}" %>").fadeOut(1500);
+<% end %>
+
+$("#cart_total").html("<strong>Total: <%=j sprintf "%0.2f €", @cart.total %>");
+$("#cart_alert").fadeOut(3000);

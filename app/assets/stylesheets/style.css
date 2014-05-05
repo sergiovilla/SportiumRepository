@@ -159,6 +159,7 @@ img.responsiveImage
   height: 100%;
   padding: 5px 10px;
 }
+
 #shopping_cart ul,
 #shopping_cart li {
   list-style: none;
@@ -168,13 +169,4 @@ img.responsiveImage
 
 #shopping_cart h3 {
   padding-top: 4em;
-}
-
-#cart_notice {
-  border: 2px solid #58A986;
-  background: #B2FFD3;
-  padding: 3px;
-  position: absolute;
-  top: 0;
-  left: 10px;
 }
