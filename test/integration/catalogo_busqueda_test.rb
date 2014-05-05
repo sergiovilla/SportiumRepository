@@ -45,7 +45,7 @@ class CatalogoBusquedaTest < ActionDispatch::IntegrationTest
   end
 
   def latest_ropa
-    get 'catalog/latest'
+    get 'catalogo/lista/novedades'
     assert_response :success
     assert_template 'catalog/latest'
     assert_tag :tag => 'div', :attributes => { :class => 'col-md-3 ropa' }
