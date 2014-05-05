@@ -6,9 +6,9 @@ Sportium::Application.routes.draw do
   match 'catalogo/:tipo' => 'catalog#index_catalogo', as: 'catalogo_tipo' 
   match 'catalogo/Marcas/:nombre' => 'catalog#index_catalogo_marcas', as: 'catalogo_marca'
   match 'catalogo/show/:id' => 'catalog#show', as: 'catalogo_show'
-
+  match 'catalogo/lista/novedades' => 'catalog#latest', as: 'catalogo_novedades' 
   get "catalog/search"
-  get "catalog/latest"
+  
 
   namespace :admin do
     resources :marcas, :tallas, :colors, :ropas
@@ -22,6 +22,17 @@ Sportium::Application.routes.draw do
   post 'cart/remove'
   get 'cart/clear'
   post 'cart/clear'
+  
+  get 'user_session/new'
+  post 'user_session/create'
+  get 'user_session/destroy'
+
+  get 'user/new'
+  post 'user/create'
+  get 'user/show'
+  match 'user/show/:id' => 'user#show'
+  get 'user/edit'
+  post 'user/update'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -39,7 +39,7 @@ class CatalogController < ApplicationController
   end
 
   def latest
-  	@ropas = Ropa.latest 6 # invoca "lastest" method para obtener las 6 últimas ropas
+  	@ropas = Ropa.latest 6 # invoca "latest" method para obtener las 6 últimas ropas
     @page_title = 'Últimos artículos'
   end
 
