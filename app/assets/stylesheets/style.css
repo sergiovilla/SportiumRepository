@@ -170,3 +170,12 @@ img.responsiveImage
 #shopping_cart h3 {
   padding-top: 4em;
 }
+
+#loginlogout {
+  background-color: #E0E0E0;
+  padding: 8px;
+  width: 300px;
+  top: 0px;
+  right: 10px;
+  position: fixed;
+}

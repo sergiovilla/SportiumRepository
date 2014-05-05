@@ -1,5 +1,5 @@
 #encoding: utf-8
-class Admin::ColorsController < ApplicationController
+class Admin::ColorsController < Admin::AuthenticatedController
   def new
     @color = Color.new
     @page_title = 'Añadir nuevo Color'

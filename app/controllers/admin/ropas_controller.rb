@@ -1,5 +1,5 @@
 #encoding: utf-8
-class Admin::RopasController < ApplicationController
+class Admin::RopasController < Admin::AuthenticatedController
 
   def new
     @tipo = params[:tipo]

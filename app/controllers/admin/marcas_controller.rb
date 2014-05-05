@@ -1,5 +1,5 @@
 #encoding: utf-8
-class Admin::MarcasController < ApplicationController
+class Admin::MarcasController < Admin::AuthenticatedController
   def new
     @marca = Marca.new
     @page_title = 'Añadir nueva Marca'
