@@ -6,10 +6,18 @@ class CartController < ApplicationController
     @ropa = Ropa.find params[:id]
     @page_title = 'Añadir producto'
 
-    if request.post?
-      @item = @cart.add params[:id]
-      flash[:cart_notice] = "Añadido <em>#{@item.ropa.nombre}</em>.".html_safe
-      redirect_to :controller => 'catalog'
+    respond_to do |format|
+      format.html {
+        if request.post?
+          @item = @cart.add params[:id]
+          flash[:cart_notice] = "Añadido <em>#{@item.ropa.nombre}</em>.".html_safe
+          redirect_to :controller => 'catalog'
+        end
+      }
+      format.js {
+        @item = @cart.add params[:id]
+        flash[:cart_notice] = "Añadido <em>#{@item.ropa.nombre}</em>.".html_safe
+      }
     end
   end
 

@@ -11,13 +11,13 @@
   	  	  <% end %>
 	  	  <div class="col-md-3 ropa">
 	  	  	<div>
-	  	  	  <div class="ropa-imagen">
+	  	  	  <div id="<%= ropa.id %>" class="ropa-imagen">
 	  	  	  	<%= link_to catalogo_show_path(ropa) do %>
 				  <%= image_tag ropa.imagen.url(:medium), :class => 'thumbnail' %>
 				<% end %>
 	  	  	  </div>
 	  	  	  <h5><%= link_to ropa.nombre, catalogo_show_path(ropa) %> 
-	   	  	      <%= link_to '+', { :controller => 'cart', :action => 'add', :id => ropa}, :class => 'btn btn-sm btn-primary' %>
+	   	  	      <%= link_to '+', { :controller => 'cart', :remote => true, :action => 'add', :id => ropa}, :class => 'btn btn-sm btn-primary' %>
 	  	  	  </h5>
 	  	  	  <div>
 	  	  	  	<span class="precio">
