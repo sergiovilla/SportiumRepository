@@ -15,6 +15,7 @@ Sportium::Application.routes.draw do
   end
 
   match 'admin/ropas/new/:tipo' => 'admin/ropas#new', as: 'new_admin_ropa_tipo'
+  match 'admin/Administrar' => 'admin/administrar#index', as: 'administrar'
 
   get 'cart/add'
   post 'cart/add'

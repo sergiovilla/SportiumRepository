@@ -11,7 +11,7 @@ class UserSessionController < ApplicationController
     @user_session.remember_me = false # just in case
     if @user_session.save
       flash[:notice] = "Sesión iniciada."
-      redirect_back_or_default :controller => '/admin/ropas', :action => :index # default login route
+      redirect_back_or_default administrar_path # default login route
     else
       render :action => :new
     end
@@ -22,6 +22,6 @@ class UserSessionController < ApplicationController
       current_user_session.destroy
       flash[:notice] = "Sesión cerrada."
     end  
-    redirect_to :controller => :catalog, :action => :index # logout route
+    redirect_to catalogo_path # logout route
   end
 end

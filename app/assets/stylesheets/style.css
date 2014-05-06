@@ -172,10 +172,11 @@ img.responsiveImage
 }
 
 #loginlogout {
+  text-align: center;
   background-color: #E0E0E0;
   padding: 8px;
-  width: 300px;
+  width: 250px;
+  left: 0px;
   top: 0px;
-  right: 10px;
   position: fixed;
 }

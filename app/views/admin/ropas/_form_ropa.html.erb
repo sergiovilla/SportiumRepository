@@ -38,12 +38,12 @@
     <%= text_field  'ropa', 'precio', :class => 'form-control' %>
   </div>
   
-  <div class="field">
+  <div class="form-group">
   <% if @ropa.imagen.exists? then %>
-    <dd><%= image_tag @ropa.imagen.url(:medium) %></dd>
+    <%= image_tag @ropa.imagen.url(:medium) %>
   <% else %>
     <p> No hay imagen disponible. </p>
   <% end %>
-  <label for="ropa_imagen">Imagen</label><br/>
-  <%= file_field 'ropa', :imagen %>
+    <label for="ropa_imagen">Imagen</label>
+    <%= file_field 'ropa', :imagen %>
   </div>

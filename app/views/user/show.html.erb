@@ -1,34 +1,114 @@
-<dl>
-  <dt>Name</dt>
-  <dd><%= @user.name %></dd>
+<div class="row">
+  <div class="col-md-3 col-md-offset-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Nombre</h3>
+      </div>
+      <div class="panel-body">
+        <%= @user.name %>
+      </div>
+    </div>
+  </div> <!-- Nombre -->
 
-  <dt>Login</dt>
-  <dd><%= @user.login %></dd>
+  <div class="col-md-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Login</h3>
+      </div>
+      <div class="panel-body">
+        <%= @user.login %>
+      </div>
+    </div>
+  </div> <!-- Login -->
+</div>
 
-  <dt>E-mail</dt>
-  <dd><%= @user.email %></dd>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">E-mail</h3>
+      </div>
+      <div class="panel-body">
+        <%= @user.email %>
+      </div>
+    </div>
+  </div> <!-- Email -->
+</div>
 
-  <dt>Login count</dt>
-  <dd><%= @user.login_count %></dd>
+<div class="row">
+  <div class="col-md-3 col-md-offset-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Último intento de conexión</h3>
+      </div>
+      <div class="panel-body">
+        <%= @user.last_request_at %>
+      </div>
+    </div>
+  </div> <!-- Último intento -->
 
-  <dt>Last request at</dt>
-  <dd><%= @user.last_request_at %></dd>
+  <div class="col-md-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Logueado actualmente desde</h3>
+      </div>
+      <div class="panel-body">
+        <%= @user.current_login_at %>
+      </div>
+    </div>
+  </div> <!-- Logueado desde -->
+</div>
 
+<div class="row">
+  <div class="col-md-3 col-md-offset-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Veces Logueado</h3>
+      </div>
+      <div class="panel-body">
+        <%= @user.login_count %>
+      </div>
+    </div>
+  </div> <!-- Veces log -->
+
+  <div class="col-md-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">IP actual</h3>
+      </div>
+      <div class="panel-body">
+        <%= @user.current_login_ip %>
+      </div>
+    </div>
+  </div> <!-- IP actual -->
+</div>
+
+<div class="row">
   <% if @user.last_login_at %>
-    <dt>Last login at</dt>
-    <dd><%= @user.last_login_at %></dd>
+    <div class="col-md-3 col-md-offset-3">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Última conexión</h3>
+        </div>
+        <div class="panel-body">
+          <%= @user.last_login_at %>
+        </div>
+      </div>
+    </div> <!-- Veces log -->
   <% end %>
-
-  <dt>Current login at</dt>
-  <dd><%= @user.current_login_at %></dd>
 
   <% if @user.last_login_ip %>
-    <dt>Last login IP</dt>
-    <dd><%= @user.last_login_ip %></dd>
+    <div class="col-md-3">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Última IP</h3>
+        </div>
+        <div class="panel-body">
+          <%= @user.last_login_ip %>
+        </div>
+      </div>
+    </div> <!-- Veces log -->
   <% end %>
+</div>
 
-  <dt>Current login IP</dt>
-  <dd><%= @user.current_login_ip %></dd>
-</dl>
-
-<%= link_to 'Edit', :action => 'edit' %>
+<%= link_to 'Editar', { :action => 'edit' }, :class => 'btn btn-success col-md-offset-3' %>

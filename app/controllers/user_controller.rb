@@ -27,7 +27,7 @@ class UserController < ApplicationController
 
   def edit
     @user = current_user
-    @page_title = 'Edit account'
+    @page_title = 'Editar cuenta'
   end
 
   def update
