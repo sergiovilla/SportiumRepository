@@ -1,14 +1,3 @@
-  <% if @ropa.errors.any? %>
-  <div id="errorExplanation">
-  <h2><%= pluralize(@ropa.errors.count, "error") %> No se pudo guardar esta 'ropa':</h2>
-    <ul>
-      <% @ropa.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
-
   <div class="form-group">
     <%= text_field 'ropa', 'tipo', :value => @tipo, :type => 'hidden', :class => 'form-control' %>
   </div>

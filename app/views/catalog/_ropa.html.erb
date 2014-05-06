@@ -11,7 +11,7 @@
   	  	  <% end %>
 	  	  <div class="col-md-3 ropa">
 	  	  	<div>
-	  	  	  <div class="ropa-imagen">
+	  	  	  <div id="<%= ropa.id %>" class="ropa-imagen">
 	  	  	  	<%= link_to catalogo_show_path(ropa) do %>
 				  <%= image_tag ropa.imagen.url(:medium), :class => 'thumbnail' %>
 				<% end %>

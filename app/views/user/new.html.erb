@@ -1,4 +1,8 @@
-<%= form_tag :action => 'create', :id => @user do %>
-  <%= render :partial => 'form' %>
-  <%= submit_tag 'Create account' %>
-<% end %>
+<div class="row">
+	<div class="col-md-4">
+		<%= form_tag :action => 'create', :id => @user do %>
+		  <%= render :partial => 'form' %>
+		  <%= submit_tag 'Crear cuenta', :class => 'btn btn-primary' %>
+		<% end %>
+	</div>
+</div>

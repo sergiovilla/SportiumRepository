@@ -3,9 +3,9 @@ class UserController < ApplicationController
 
   def new
     @user = User.new
-    @page_title = 'Create new account'
+    @page_title = 'Crear nueva cuenta'
     if current_user
-      flash[:notice] = 'Only one account can be created.'
+      flash[:notice] = 'Sólo puede tener una cuenta.'
       redirect_to :controller => 'about', :action => 'index'
     else
       # only when there are no accounts it allows to create a new one, unique in the system
@@ -16,10 +16,11 @@ class UserController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save # the new user has been logged in automatically
-      flash[:notice] = "Account #{@user.name} was succesfully created. User logged in."
+      flash[:notice] = "Cuenta #{@user.name} ha sido creada correctamente."
       redirect_to :action => 'show'
     else
-      @page_title = 'Create new account'
+      @page_title = 'Crer nueva cuenta'
+      flash[:error] = @user.errors.full_messages
       render :action => :new
     end
   end
@@ -32,10 +33,10 @@ class UserController < ApplicationController
   def update
     @user = current_user
     if @user.update_attributes(params[:user])
-      flash[:notice] = "Account #{@user.name} was succesfully updated."
+      flash[:notice] = "Cuenta #{@user.name} ha sido actualizada correctamente."
       redirect_to :action => 'show'
     else
-      @page_title = 'Edit account'
+      @page_title = 'Editar cuenta'
       render :action => 'edit'
     end
   end
