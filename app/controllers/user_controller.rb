@@ -38,6 +38,7 @@ class UserController < ApplicationController
       redirect_to :action => 'show'
     else
       @page_title = 'Editar cuenta'
+      flash[:error] = @user.errors.full_messages
       render :action => 'edit'
     end
   end

@@ -11,8 +11,8 @@ class Admin::RopasController < Admin::AuthenticatedController
     	@colores = get_all_colors()
     	unless @tipo.eql? 'Zapatillas'
         	@tallas = get_all_tallas()
-      	end
-      	render 'new_ropa'
+      end
+      render 'new_ropa'
     end
   end
   
@@ -23,7 +23,14 @@ class Admin::RopasController < Admin::AuthenticatedController
       redirect_to :action => 'index'
     else
       flash[:error] = @ropa.errors.full_messages
-     	redirect_to :action => 'new_ropa'
+
+      @tipo = @ropa.tipo
+      @marcas = get_all_marcas()
+      @colores = get_all_colors()
+      unless @tipo.eql? 'Zapatillas'
+          @tallas = get_all_tallas()
+      end
+     	render 'new_ropa'
     end
   end
 
