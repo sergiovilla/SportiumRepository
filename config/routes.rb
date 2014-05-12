@@ -1,5 +1,7 @@
 Sportium::Application.routes.draw do
 
+  get "password_reset/new"
+
   root :to => "about#index"
 
   match 'catalogo' => 'catalog#index'
@@ -34,6 +36,8 @@ Sportium::Application.routes.draw do
   match 'user/show/:id' => 'user#show'
   get 'user/edit'
   post 'user/update'
+
+  resources :password_reset
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -14,6 +14,7 @@ class UserSessionController < ApplicationController
       flash[:notice] = "Sesión iniciada."
       redirect_back_or_default administrar_path # default login route
     else
+      flash[:error] = @user_session.errors.full_messages
       render :action => :new
     end
   end
