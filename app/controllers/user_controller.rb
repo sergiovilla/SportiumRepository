@@ -33,7 +33,17 @@ class UserController < ApplicationController
 
   def update
     @user = current_user
-    if @user.update_attributes(params[:user])
+
+    if params[:user][:password].to_s.blank?
+      if update_single_attributes(@user, params[:user])
+        flash[:notice] = "Cuenta #{@user.name} ha sido actualizada correctamente."
+        redirect_to :action => 'show'
+      else
+        @page_title = 'Editar cuenta'
+        flash[:error] = @user.errors.full_messages
+        render :action => 'edit'
+      end
+    elsif @user.update_attributes(params[:user])
       flash[:notice] = "Cuenta #{@user.name} ha sido actualizada correctamente."
       redirect_to :action => 'show'
     else
@@ -46,5 +56,25 @@ class UserController < ApplicationController
   def show
     @user = current_user
     @page_title = @user.name
+  end
+
+  private
+  def update_single_attributes(user, attrs)
+    user.name = attrs[:name]
+    user.login = attrs[:login]
+    user.email = attrs[:email]
+    user.valid?
+
+    user.errors.delete :password
+    user.errors.delete :password_confirmation
+
+    if !user.errors[:name].blank? or !user.errors[:login].blank? or !user.errors[:email].blank?
+      return false
+    else
+      user.update_attribute :name, attrs[:name]
+      user.update_attribute :login, attrs[:login]
+      user.update_attribute :email, attrs[:email]
+      return true
+    end
   end
 end
