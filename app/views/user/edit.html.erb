@@ -1,0 +1,11 @@
+<div class="row">
+	<div class="col-md-4">
+		<%= form_tag :action => 'update', :id => @user do %>
+		  <%= render :partial => 'form' %>
+		  <%= submit_tag 'Actualizar cuenta', :class => 'btn btn-primary' %>
+		<% end %>
+	</div>
+</div>
+<br>
+
+<%= link_to 'Volver', { :action => 'show' }, :class => 'btn btn-default' %>

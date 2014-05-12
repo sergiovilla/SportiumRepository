@@ -9,15 +9,35 @@
 <body>
   <header>
   	<div class="container">
-		<div class="masthead">
-	    <h3 class="text-muted">Sportium&trade;</h3>
+  		<div class="row">
+  		<div id="loginlogout" class="pull-right">
+    		<% if current_user %>
+            	Logueado como <%= current_user.login %>
+            	<br>
+            	<%= link_to "Editar cuenta", :controller => '/user', :action => :show %>
+            	<br>
+            	<%= link_to "Logout", :controller => '/user_session', :action => :destroy %>
+        	<% else %>
+            	<% if User.count == 0 %>
+    		      	Login<br>
+            		<%= link_to "Crear nueva cuenta", :controller => '/user', :action => :new %>
+          		<% else %>
+            		<%= link_to "Login", :controller => '/user_session', :action => :new %>
+          		<% end %>
+        	<% end %>
+      	</div>
+      	</div>
+  		<div class="masthead">
+  	    <h3 class="text-muted">Sportium&trade;</h3>
+  		  
 	      <ul class="nav nav-justified">
 	        <li id="inicio"><%= link_to 'Inicio', root_path %></li>
-	        <li id="marcas"><a href="#">Marcas</a></li>
-	        <li id="camisetas"><a href="#">Camisetas</a></li>
-	        <li id="calzonas"><a href="#">Calzonas</a></li>
-	        <li id="equip"><a href="#">Equipaciones</a></li>
-	        <li id="zapatillas"><a href="#">Zapatillas</a></li>
+	        <li id="catalogo"><%= link_to 'Catálogo', catalogo_path %></li>
+	        <li id="marcas"><%= link_to 'Marcas', catalogo_tipo_path('Marcas') %></li>
+	        <li id="about"><%= link_to 'About', root_path %></li>
+          <% if current_user %>
+            <li id="admin"><%= link_to 'Administrar', administrar_path %></li>
+          <% end %>
 	      </ul>
 	    </div>
     </div>
@@ -27,17 +47,32 @@
 	<h2><%= @page_title %></h2>
 
 	<% flash.each do |nivel, msg| %>
-	<div class="<%= flash_class(nivel) %>">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    	<% if nivel.eql? :error %>
-    		<h3><%= pluralize(msg.count, "error", "errores") %></h3>
-    		<ul><% msg.each do |razon| %>
-        	<li><%= razon %></li>
-      	<% end %>
-    		</ul>
-    	<% else %>
-    		<%= msg %>
-    	<% end %>
+    <% unless nivel.eql? :cart_notice %>
+    	<div class="<%= flash_class(nivel) %>">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        	<% if nivel.eql? :error %>
+        		<h3><%= pluralize(msg.count, "error", "errores") %></h3>
+        		<ul><% msg.each do |razon| %>
+            	<li><%= razon %></li>
+          	  <% end %>
+        		</ul>
+        	<% else %>
+        		<%= msg %>
+        	<% end %>
+      </div>
+      <% end %>
+  <% end %>
+
+  <% if @cart %>
+    <script>
+      $('body').css("margin-right", "180px");
+    </script>
+    <div class="row">
+      <div class="col-md-3 col-md-offset-8" style="position: fixed;">
+        <div id="shopping_cart">
+          <%= render :partial => 'cart/cart' %>
+        </div>
+      </div>
     </div>
   <% end %>
 

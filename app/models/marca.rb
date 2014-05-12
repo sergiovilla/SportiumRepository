@@ -5,7 +5,6 @@ class Marca < ActiveRecord::Base
 	validates_attachment_content_type :imagen, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 
 	validates :nombre, :presence => true, :uniqueness => true
-	
 	validates :pais, :presence => true
 
   	attr_accessible :nombre, :pais, :imagen

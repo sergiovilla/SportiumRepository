@@ -1,2 +1,69 @@
-<h1>Catalog#index</h1>
-<p>Find me in app/views/catalog/index.html.erb</p>
+<h3>Seleccione el tipo producto que desea</h3>
+<br><br>
+
+<div class="row">
+  <div class="col-md-9">
+  	<div class="catalogo-container">
+	  
+	  <div class="row">
+	  	<div class="col-md-3 col-md-offset-3 ropa">
+		  <%= link_to catalogo_tipo_path('Camiseta') do %>
+			<%= image_tag '/imagenesCatalogo/catalogo_Camiseta.jpg', :class => 'thumbnail' %>
+		  <% end %>
+		  <h4><%= link_to 'Camisetas', catalogo_tipo_path('Camiseta') %></h4>
+		</div>
+
+		<div class="col-md-3 ropa">
+		  <%= link_to catalogo_tipo_path('Calzonas') do %>
+			<%= image_tag '/imagenesCatalogo/catalogo_Calzonas.jpg', :class => 'thumbnail' %>
+		  <% end %>
+		  <h4><%= link_to 'Calzonas', catalogo_tipo_path('Calzonas') %></h4>
+		</div>
+
+		<div class="col-md-3 ropa">
+		  <%= link_to catalogo_tipo_path('Chándal') do %>
+			<%= image_tag '/imagenesCatalogo/catalogo_Chándal.jpg', :class => 'thumbnail' %>
+		  <% end %>
+		  <h4><%= link_to 'Chándals', catalogo_tipo_path('Chándal') %></h4>
+	    </div>
+	  </div>
+
+	  <div class="row">
+	  	<div class="col-md-3 col-md-offset-3 ropa">
+	  	  <%= link_to catalogo_tipo_path('Equipación') do %>
+			<%= image_tag '/imagenesCatalogo/catalogo_Equipación.jpg', :class => 'thumbnail' %>
+		  <% end %>
+		  <h4><%= link_to 'Equipaciones', catalogo_tipo_path('Equipación') %></h4>
+	  	</div>
+
+	  	<div class="col-md-3 ropa">
+	  	  <%= link_to catalogo_tipo_path('Zapatillas') do %>
+			<%= image_tag '/imagenesCatalogo/catalogo_Zapatillas.jpg', :class => 'thumbnail' %>
+		  <% end %>
+		  <h4><%= link_to 'Zapatillas', catalogo_tipo_path('Zapatillas') %></h4>
+	  	</div>
+
+	  	<div class="col-md-3 ropa">
+	  	  <%= link_to catalogo_novedades_path do %>
+			<%= image_tag '/imagenesCatalogo/catalogo_novedades.png', :class => 'thumbnail' %>
+		  <% end %>
+		  <h4><%= link_to 'Últimos productos', catalogo_novedades_path %></h4>
+		</div>
+	  </div>
+
+	  <div class="row">
+	  	<div class="col-md-3 col-md-offset-6 ropa">
+		  <%= link_to catalogo_tipo_path('Marcas') do %>
+			<%= image_tag '/imagenesCatalogo/catalogo_marcas.jpg', :class => 'thumbnail' %>
+		  <% end %>
+		  <h4><%= link_to 'Marcas', catalogo_tipo_path('Marcas') %></h4>
+	  	</div>
+	  </div>
+
+  	</div>
+  </div>
+</div>
+
+<script>
+	$('#catalogo').addClass('active');
+</script>

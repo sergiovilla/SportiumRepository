@@ -1,7 +1,7 @@
 <tr>
-  <td><%= link_to marca.nombre, :action => 'show', :id => marca %></td>
+  <td><%= link_to marca.nombre, admin_marca_path(marca) %></td>
   <td><%= marca.pais %></td>
-  <td><%= link_to 'Editar', :action => 'edit', :id => marca %></td>
+  <td><%= link_to 'Editar', edit_admin_marca_path(marca) %></td>
   <td>
     <%= button_to "Borrar", admin_marca_path(marca), :method => :delete, 
     	:class => 'btn btn-danger btn-sm', 

@@ -5,6 +5,7 @@
 		  <tr>
 		    <th>Tipo</th>
 		    <th>Nombre</th>
+		    <th></th>
 		    <th>Borrar</th>
 		  </tr>
 
@@ -13,4 +14,8 @@
 	</div>
 </div>
 
-<%= link_to 'Añadir nueva ropa', { :action => 'new' }, :class => 'btn btn-success' %>
+<%= link_to 'Añadir nueva ropa', new_admin_ropa_path, :class => 'btn btn-success' %>
+
+<script>
+	$('#admin').addClass('active');
+</script>

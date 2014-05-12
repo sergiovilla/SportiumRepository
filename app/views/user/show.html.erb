@@ -1,0 +1,114 @@
+<div class="row">
+  <div class="col-md-3 col-md-offset-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Nombre</h3>
+      </div>
+      <div class="panel-body">
+        <%= @user.name %>
+      </div>
+    </div>
+  </div> <!-- Nombre -->
+
+  <div class="col-md-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Login</h3>
+      </div>
+      <div class="panel-body">
+        <%= @user.login %>
+      </div>
+    </div>
+  </div> <!-- Login -->
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">E-mail</h3>
+      </div>
+      <div class="panel-body">
+        <%= @user.email %>
+      </div>
+    </div>
+  </div> <!-- Email -->
+</div>
+
+<div class="row">
+  <div class="col-md-3 col-md-offset-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Último intento de conexión</h3>
+      </div>
+      <div class="panel-body">
+        <%= @user.last_request_at %>
+      </div>
+    </div>
+  </div> <!-- Último intento -->
+
+  <div class="col-md-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Logueado actualmente desde</h3>
+      </div>
+      <div class="panel-body">
+        <%= @user.current_login_at %>
+      </div>
+    </div>
+  </div> <!-- Logueado desde -->
+</div>
+
+<div class="row">
+  <div class="col-md-3 col-md-offset-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Veces Logueado</h3>
+      </div>
+      <div class="panel-body">
+        <%= @user.login_count %>
+      </div>
+    </div>
+  </div> <!-- Veces log -->
+
+  <div class="col-md-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">IP actual</h3>
+      </div>
+      <div class="panel-body">
+        <%= @user.current_login_ip %>
+      </div>
+    </div>
+  </div> <!-- IP actual -->
+</div>
+
+<div class="row">
+  <% if @user.last_login_at %>
+    <div class="col-md-3 col-md-offset-3">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Última conexión</h3>
+        </div>
+        <div class="panel-body">
+          <%= @user.last_login_at %>
+        </div>
+      </div>
+    </div> <!-- Veces log -->
+  <% end %>
+
+  <% if @user.last_login_ip %>
+    <div class="col-md-3">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Última IP</h3>
+        </div>
+        <div class="panel-body">
+          <%= @user.last_login_ip %>
+        </div>
+      </div>
+    </div> <!-- Veces log -->
+  <% end %>
+</div>
+
+<%= link_to 'Editar', { :action => 'edit' }, :class => 'btn btn-success col-md-offset-3' %>

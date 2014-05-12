@@ -22,10 +22,18 @@ end
 
 gem 'jquery-rails'
 
+# Gema para imágenes
 gem 'paperclip'
 
+# Gemas para paginación
 gem 'will_paginate', '3.0.5'
 gem 'will_paginate-bootstrap' ,'1.0.0'
+
+# Jquery-ui
+gem 'jquery-ui-rails'
+
+# Seguridad (login)
+gem 'authlogic', '3.2.0'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

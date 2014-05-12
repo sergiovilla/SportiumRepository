@@ -1,28 +1,39 @@
 Sportium::Application.routes.draw do
 
-  get "catalog/index"
-  get "catalog/camisetas"
-  get "catalog/calzonas"
-  get "catalog/equipaciones"
-  get "catalog/zapatillas"
-  get "catalog/chandals"
-  get "catalog/show"
-  get "catalog/search"
-  get "catalog/latest"
-  match 'catalog/show/:id' => 'catalog#show'
-
-
   root :to => "about#index"
-  
-  #rutas no generadas por namespace
-  get 'admin/ropas/new_ropa'
-  get 'admin/ropas/new_zapatillas'
 
+  match 'catalogo' => 'catalog#index'
+  match 'catalogo/:tipo' => 'catalog#index_catalogo', as: 'catalogo_tipo' 
+  match 'catalogo/Marcas/:nombre' => 'catalog#index_catalogo_marcas', as: 'catalogo_marca'
+  match 'catalogo/show/:id' => 'catalog#show', as: 'catalogo_show'
+  match 'catalogo/lista/novedades' => 'catalog#latest', as: 'catalogo_novedades' 
+  get "catalog/search"
   
+
   namespace :admin do
     resources :marcas, :tallas, :colors, :ropas
   end
 
+  match 'admin/ropas/new/:tipo' => 'admin/ropas#new', as: 'new_admin_ropa_tipo'
+  match 'admin/Administrar' => 'admin/administrar#index', as: 'administrar'
+
+  get 'cart/add'
+  post 'cart/add'
+  get 'cart/remove'
+  post 'cart/remove'
+  get 'cart/clear'
+  post 'cart/clear'
+  
+  get 'user_session/new'
+  post 'user_session/create'
+  get 'user_session/destroy'
+
+  get 'user/new'
+  post 'user/create'
+  get 'user/show'
+  match 'user/show/:id' => 'user#show'
+  get 'user/edit'
+  post 'user/update'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

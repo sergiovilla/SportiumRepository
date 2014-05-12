@@ -7,12 +7,12 @@
     <%= text_field 'marca', 'pais', :class => 'form-control' %>
   </div>
   
-  <div class="field">
+  <div class="form-group">
   <% if @marca.imagen.exists? then %>
-    <dd><%= image_tag @marca.imagen.url(:medium) %></dd>
+    <%= image_tag @marca.imagen.url(:medium) %>
   <% else %>
     <p> No hay imagen disponible. </p>
   <% end %>
-  <p><label for="marca_imagen">Imagen</label><br/>
-  <%= file_field 'marca', :imagen %></p>
+    <label for="marca_imagen">Imagen</label>
+    <%= file_field 'marca', :imagen %>
   </div>

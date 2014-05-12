@@ -1,7 +1,7 @@
 <tr>
-  <td><%= link_to talla.nombre_euro, :action => 'show', :id => talla %></td>
-  <td><%= link_to talla.nombre_usa, :action => 'show', :id => talla %></td>
-  <td><%= link_to 'Editar', :action => 'edit', :id => talla %></td>
+  <td><%= link_to talla.nombre_euro, admin_talla_path(talla) %></td>
+  <td><%= link_to talla.nombre_usa, admin_talla_path(talla) %></td>
+  <td><%= link_to 'Editar', edit_admin_talla_path(talla) %></td>
   <td>
     <%= button_to "Borrar", admin_talla_path(talla), :method => :delete, 
     	:class => 'btn btn-danger btn-sm', 

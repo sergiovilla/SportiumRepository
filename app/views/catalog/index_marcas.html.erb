@@ -1,0 +1,51 @@
+<h3>Seleccione la marca que desee para ver sus productos</h3>
+<br>
+
+<% item_count = 0 %>
+
+<div class="row">
+  <div class="col-md-9 col-md-offset-2">
+  	<div class="catalogo-container">
+  	
+  	  <% for marca in @marcas %>
+  	  	  <% if item_count == 1 %>
+  	  	    <div class="row" style="margin-top: 20px;">
+  	  	  <% end %>
+	  	  <div class="col-md-3 ropa">
+	  	  	<div>
+	  	  	  <div class="ropa-imagen">
+	  	  	  	<%= link_to catalogo_marca_path(marca.nombre) do %>
+				  <%= image_tag marca.imagen.url(:medium), :class => 'thumbnail' %>
+				<% end %>
+	  	  	  </div>
+	  	  	  <h5><%= link_to marca.nombre, catalogo_marca_path(marca.nombre) %></h5>
+	  	  	  <div>
+	  	  	  	<span class="precio">
+	  	  	  		País: <%= marca.pais %>
+	  	  	  	</span>
+	  	  	  </div>
+	  	  	</div>
+	  	  </div>
+	  	  <% if item_count == 3 then %>
+	  	  	</div>
+	  	  	<% item_count = 1 %>
+	  	  <% else %>
+	  	  	<% item_count += 1 %>
+	  	  <% end %>
+  	  <% end %>
+
+  	  <% if item_count != 1 %>
+  	    </div>
+  	  <% end %>
+
+  	</div>
+  </div>
+</div>
+
+<div class="text-center">
+  <%= will_paginate @marcas, :renderer => BootstrapPagination::Rails %>
+</div>
+
+<script>
+	$('#marcas').addClass('active');
+</script>

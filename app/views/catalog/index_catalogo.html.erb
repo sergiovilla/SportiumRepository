@@ -1,0 +1,13 @@
+<% if @ropas.empty? %>
+  <h3>En estos momentos no disponemos de productos de este tipo, lo sentimos</h3>
+<% end %>
+
+<%= render :partial => "ropa" %>
+
+<div class="text-center">
+  <%= will_paginate @ropas, :renderer => BootstrapPagination::Rails %>
+</div>
+
+<script>
+	$('#catalogo').addClass('active');
+</script>

@@ -1,12 +1,21 @@
 
 <div class="row">
 	<div class="col-md-4">
-		<%= form_tag( {:action => 'create'}, :multipart => true) do %>   
-		  <%= render 'form_ropa' %>   
-		  <%= submit_tag 'Crear ropa', :class => 'btn btn-primary' %>
+		<%= form_tag( {:action => 'create'}, :multipart => true) do %>
+		  <% if @tipo.eql? 'Zapatillas' then %>
+		    <%= render 'form_zapa' %>   
+		    <%= submit_tag 'Crear zapatillas', :class => 'btn btn-primary' %> 
+		  <% else %>  
+		    <%= render 'form_ropa' %>   
+		    <%= submit_tag 'Crear ropa', :class => 'btn btn-primary' %>
+		  <% end %>
 		<% end %>
 	</div>
 </div>
 
 <br>
-<%= link_to 'Back', { :action => 'new' }, :class => 'btn btn-default btn-sm' %>
+<%= link_to 'Volver', new_admin_ropa_path, :class => 'btn btn-default btn-sm' %>
+
+<script>
+	$('#admin').addClass('active');
+</script>

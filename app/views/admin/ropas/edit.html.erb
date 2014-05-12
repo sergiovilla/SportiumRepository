@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-md-4">
 		<%= form_tag admin_ropa_path(@ropa), :method => 'put', :multipart => true do %>
-	      <% if @tipoZapatila %>
+	      <% if @tipoZapatillas then %>
  			<%= render :partial => 'form_zapa' %>
 		  <% else %>
  		 	<%= render :partial => 'form_ropa' %>
@@ -12,5 +12,9 @@
 </div>
 
 <br>
-<%= link_to 'Mostrar', { :action => 'show', :id => @ropa }, :class => 'btn btn-success' %>
-<%= link_to 'Volver', { :action => 'index' }, :class => 'btn btn-default btn-sm' %>
+<%= link_to 'Mostrar', admin_ropa_path(@ropa), :class => 'btn btn-success' %>
+<%= link_to 'Volver', admin_ropas_path, :class => 'btn btn-default btn-sm' %>
+
+<script>
+	$('#admin').addClass('active');
+</script>

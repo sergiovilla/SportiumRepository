@@ -1,0 +1,5 @@
+- <%= link_to item.ropa.nombre, catalogo_show_path(item.ropa.id) %>
+<br>
+<%= pluralize item.cantidad, item.ropa.tipo , item.ropa.tipo + 's'%>, <%= sprintf "%0.2f €", item.precio * item.cantidad %>
+
+(<%= link_to '<b>-</b>'.html_safe, :controller => 'cart', :remote => true, :action => 'remove', :id => item.ropa %>)
