@@ -4,12 +4,12 @@ Sportium::Application.routes.draw do
 
   root :to => "about#index"
 
+  match 'catalogo/search' => 'catalog#search', as: 'search'
   match 'catalogo' => 'catalog#index'
-  match 'catalogo/:tipo' => 'catalog#index_catalogo', as: 'catalogo_tipo' 
   match 'catalogo/Marcas/:nombre' => 'catalog#index_catalogo_marcas', as: 'catalogo_marca'
+  match 'catalogo/:tipo' => 'catalog#index_catalogo', as: 'catalogo_tipo' 
   match 'catalogo/show/:id' => 'catalog#show', as: 'catalogo_show'
   match 'catalogo/lista/novedades' => 'catalog#latest', as: 'catalogo_novedades' 
-  get "catalog/search"
   
 
   namespace :admin do

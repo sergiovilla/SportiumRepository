@@ -1,2 +1,9 @@
-<h1>Catalog#search</h1>
-<p>Find me in app/views/catalog/search.html.erb</p>
+<%= render :partial => "busqueda" %>
+
+<h3>Se han encontrado <%= pluralize(@ropas.size, "artículo") %> para la búsqueda de "<%= "#{params[:query]}" %>"</h3>
+
+<%= render :partial => "ropa" %>
+
+<div class="text-center">
+  <%= will_paginate @ropas, :renderer => BootstrapPagination::Rails %>
+</div>

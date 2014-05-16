@@ -36,6 +36,10 @@ class CatalogController < ApplicationController
   end
 
   def search
+    @page_title = 'Búsqueda'
+    @ropas = Ropa.search(params[:query]).paginate :page => params[:page], 
+            :order => "ropas.id desc",
+            :per_page => 6
   end
 
   def latest
