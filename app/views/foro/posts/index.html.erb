@@ -1,0 +1,47 @@
+<%= link_to 'Nuevo Post', new_foro_post_path, :class => 'btn btn-primary' %>
+<br><br>
+
+<table class="table table-striped">
+  <tr>
+  	<th width="15%">Autor</th>
+    <th width="45%">Título</th>
+    <th>Último comentario</th>
+    <th># Comentarios</th>
+    <th></th>
+    <% if current_user %>
+      <th>Admin</th>
+    <% end %>
+  </tr>
+ 
+<% @posts.each do |post| %>
+  <tr>
+    <td>
+      <%= post.autor %> <br>
+      <%= post.created_at.strftime("%H:%M:%S %d/%M/%Y") %>
+    </td>
+    <td><%= link_to post.titulo, foro_post_path(post) %></td>
+    <td>
+      <% ultimo_comentario = post.comentarios.find(:last) %>
+      <% if ultimo_comentario %>
+        <%= ultimo_comentario.created_at.strftime("%H:%M:%S %d/%M/%Y") %> <br>
+        <b>De:</b> <%= ultimo_comentario.autor %>
+      <% else %>
+        Sin comentarios
+      <% end %>
+    </td>
+    <td><%= post.comentarios.count %></td>
+    <td><%= link_to 'Comentar', reply_post_path(post) %></td>
+    <% if current_user %>
+      <td>
+        <%= link_to 'Moderar', edit_foro_post_path(post) %> <br>
+        <%= link_to 'Borrar', foro_post_path(post), :method => :delete %>
+      </td>
+    <% end %>
+  </tr>
+<% end %>
+
+</table>
+
+<script>
+  $("#foro").addClass("active");
+</script>

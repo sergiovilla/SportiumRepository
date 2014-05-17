@@ -1,0 +1,2 @@
+module Foro::ComentariosHelper
+end

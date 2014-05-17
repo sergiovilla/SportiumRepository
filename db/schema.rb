@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140512222545) do
+ActiveRecord::Schema.define(:version => 20140517115744) do
 
   create_table "cart_items", :force => true do |t|
     t.integer  "ropa_id"
@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(:version => 20140512222545) do
     t.string "nombre"
   end
 
+  create_table "comentarios", :force => true do |t|
+    t.string   "autor"
+    t.text     "cuerpo"
+    t.integer  "post_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "comentarios", ["post_id"], :name => "fk_comentarios_posts"
+
   create_table "marcas", :force => true do |t|
     t.string   "nombre"
     t.string   "pais"
@@ -40,6 +50,15 @@ ActiveRecord::Schema.define(:version => 20140512222545) do
     t.string   "imagen_content_type"
     t.integer  "imagen_file_size"
     t.datetime "imagen_updated_at"
+  end
+
+  create_table "posts", :force => true do |t|
+    t.string   "autor"
+    t.string   "titulo"
+    t.string   "subject"
+    t.text     "cuerpo"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "ropas", :force => true do |t|

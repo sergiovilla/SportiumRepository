@@ -34,6 +34,7 @@
 	        <li id="inicio"><%= link_to 'Inicio', root_path %></li>
 	        <li id="catalogo"><%= link_to 'Catálogo', catalogo_path %></li>
 	        <li id="marcas"><%= link_to 'Marcas', catalogo_tipo_path('Marcas') %></li>
+          <li id="foro"><%= link_to 'Foro', foro_posts_path %></li>
 	        <li id="about"><%= link_to 'About', root_path %></li>
           <% if current_user %>
             <li id="admin"><%= link_to 'Administrar', administrar_path %></li>
