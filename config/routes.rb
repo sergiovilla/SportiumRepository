@@ -15,6 +15,11 @@ Sportium::Application.routes.draw do
   namespace :admin do
     resources :marcas, :tallas, :colors, :ropas
   end
+  
+  post 'admin/order/close'
+  get 'admin/order/show'
+  match 'admin/order/show/:id' => 'admin/order#show'
+  match 'admin/orders' => 'admin/order#index', as 'admin_orders'
 
   match 'admin/ropas/new/:tipo' => 'admin/ropas#new', as: 'new_admin_ropa_tipo'
   match 'admin/Administrar' => 'admin/administrar#index', as: 'administrar'
