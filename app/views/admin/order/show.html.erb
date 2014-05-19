@@ -24,7 +24,7 @@
 
 <h2>Detalles del pedido</h2>
 <% for item in @order.order_items %>
-  <%= link_to item.book.title, :controller => 'ropa', :action => 'show', :id => item.ropa.id %>
+  <%= link_to item.ropa.nombre, :controller => 'ropas', :action => 'show', :id => item.ropa.id %>
   <%= pluralize(item.amount, "ropa", "ropas") %>, <%= item.price * item.amount %> € <br/>
 <% end %>
 

@@ -20,6 +20,6 @@ class Admin::OrderController < Admin::AuthenticatedController
       conditions = "status = '#{@status}'"
     end
     @orders = Order.paginate :page => params[:page], :conditions => conditions, :per_page => 10
-    @page_title = "Mostrando #{@status} ordenes"
+    @page_title = "Mostrando ordenes con estado: #{@status}"
   end
 end
