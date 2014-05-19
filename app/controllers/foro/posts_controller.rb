@@ -4,7 +4,12 @@ class Foro::PostsController < ApplicationController
 
   def index
     @page_title = 'Foro'
-    @posts = Post.all
+    posts = Post.all
+    @posts_last_comment = Hash.new(nil)
+
+    posts.each do |post|
+      @posts_last_comment[post] = post.comentarios.find(:last)
+    end
   end
 
   def new
@@ -52,7 +57,7 @@ class Foro::PostsController < ApplicationController
   end
 
   def update
-    if @post.update_attributes(params[:talla])
+    if @post.update_attributes(params[:post])
       flash[:success] = "Post atualizado correctamente"
       redirect_to :action => 'show', :id => @post
     else

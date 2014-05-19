@@ -13,7 +13,7 @@
     <% end %>
   </tr>
  
-<% @posts.each do |post| %>
+<% @posts_last_comment.each do |post, comment| %>
   <tr>
     <td>
       <%= post.autor %> <br>
@@ -21,10 +21,9 @@
     </td>
     <td><%= link_to post.titulo, foro_post_path(post) %></td>
     <td>
-      <% ultimo_comentario = post.comentarios.find(:last) %>
-      <% if ultimo_comentario %>
-        <%= ultimo_comentario.created_at.strftime("%H:%M:%S %d/%M/%Y") %> <br>
-        <b>De:</b> <%= ultimo_comentario.autor %>
+      <% if comment %>
+        <%= comment.created_at.strftime("%H:%M:%S %d/%M/%Y") %> <br>
+        <b>De:</b> <%= comment.autor %>
       <% else %>
         Sin comentarios
       <% end %>
