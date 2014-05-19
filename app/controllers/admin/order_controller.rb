@@ -2,7 +2,7 @@ class Admin::OrderController < Admin::AuthenticatedController
   def close
     order = Order.find(params[:id])
     order.close
-    flash[:notice] = "La orden  ##{order.id} ha sido cerrada."
+    flash[:notice] = "La orden ##{order.id} ha sido cerrada."
     redirect_to :action => 'index'
   end
 
@@ -14,7 +14,7 @@ class Admin::OrderController < Admin::AuthenticatedController
   def index
     @status = params[:id]
     if @status.blank?
-      @status = 'all'
+      @status = 'todas'
       conditions = nil
     else
       conditions = "status = '#{@status}'"

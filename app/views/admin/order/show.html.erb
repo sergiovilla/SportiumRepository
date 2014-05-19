@@ -28,7 +28,7 @@
   <%= pluralize(item.amount, "ropa", "ropas") %>, <%= item.price * item.amount %> € <br/>
 <% end %>
 
-<p><strong>Order total <%= @order.total %> €</strong></p>
+<p><strong>Precio total <%= @order.total %> €</strong></p>
 
 <h2>Estado del pedido</h2>
 <dl>
@@ -41,7 +41,9 @@
 </dl>
 
 <% if !@order.closed? %> <p></p> <% end %>
-<%= button_to 'Close order', {:action => 'close', :id => @order},
-              :confirm => "Are you sure you want to close order #{@order.id}?" if @order.processed? %>
+<%= button_to 'Cerrar orden', {:action => 'close', :id => @order}, :class => 'btn btn-primary',
+              :confirm => "¿Está seguro que desea cerrar la orden #{@order.id}?" if @order.processed? %>
+
+<br>
 
 <%= render :partial => 'navigation' %>
