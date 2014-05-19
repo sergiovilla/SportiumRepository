@@ -35,6 +35,17 @@ gem 'jquery-ui-rails'
 # Seguridad (login)
 gem 'authlogic', '3.2.0'
 
+# Checkout
+
+gem 'currencies', '0.4.0'
+
+gem 'countries', '0.9.2', :require => 'iso3166'
+
+gem 'activemerchant', '1.31.1'
+
+gem 'eu_central_bank', '0.3.5'
+
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

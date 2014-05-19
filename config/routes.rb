@@ -37,6 +37,10 @@ Sportium::Application.routes.draw do
   get 'user/edit'
   post 'user/update'
 
+  get 'checkout/index'
+  post 'checkout/submit_order'
+  get 'checkout/thank_you'
+
   resources :password_reset
 
   namespace :foro do
