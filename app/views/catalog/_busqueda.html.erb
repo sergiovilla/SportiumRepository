@@ -1,0 +1,12 @@
+<div class="col-md-3 pull-right">
+<%= form_tag( search_path, :class => 'navbar-form', :role => 'search') do %>
+	
+	<div class="input-group">
+		<%= text_field_tag 'query', nil, :class => 'form-control', :placeholder => 'Buscar...'  %>
+		<span class="input-group-btn">
+			<%= submit_tag 'Ok', :class => 'btn btn-primary' %>
+		</span>		
+	</div>
+	
+<% end %>
+</div>

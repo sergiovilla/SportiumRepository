@@ -1,0 +1,21 @@
+<div class="row">
+	<div class="col-md-4">
+
+		<%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
+
+		  <div class="form-group">
+		    <label for="login">Nueva contraseña</label>
+		    <%= f.password_field :password, :class => 'form-control' %>
+		  </div>
+
+		  <div class="form-group">
+		    <label for="login">Confirmar nueva contraseña</label>
+		    <%= f.password_field :password_confirmation, :class => 'form-control' %>
+		  </div>
+
+		  <%= f.submit "Actualizar contraseña", :class => 'btn btn-primary' %>
+
+		<% end %>
+
+	</div>
+</div>

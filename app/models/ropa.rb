@@ -25,6 +25,14 @@ class Ropa < ActiveRecord::Base
   	def self.latest(num)
     	find :all, :limit => num, :order => "ropas.id desc"
     end
+
+    def self.search(search)
+    	if search
+    		where('nombre LIKE ?', "%#{search}%")
+    	else
+    		scoped
+    	end
+    end
     
     def tipoZapatillas?
     	tipo == 'Zapatillas'

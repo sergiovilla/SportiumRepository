@@ -1,7 +1,32 @@
 <div class="row">
 	<div class="col-md-4">
 		<%= form_tag :action => 'update', :id => @user do %>
-		  <%= render :partial => 'form' %>
+		  <div class="form-group">
+			<label for="user_name">Nombre</label>
+			<%= text_field 'user', 'name', :class => 'form-control' %>
+		  </div>
+
+		  <div class="form-group">
+			<label for="user_login">Login</label>
+			<%= text_field 'user', 'login', :class => 'form-control' %>
+		  </div>
+
+		  <div class="form-group">
+			<label for="user_email">E-mail</label>
+			<%= text_field 'user', 'email', :class => 'form-control' %>
+		  </div>
+		  <br>
+		  <p><em>*Si no desea modificar la contraseña deje los siguientes campos en blanco</em></p>
+
+		  <div class="form-group">
+			<label for="user_password">*Nueva contraseña</label>
+			<%= password_field 'user', 'password', :class => 'form-control' %>
+		  </div>
+
+		  <div class="form-group">
+			<label for="user_password_confirmation">*Confirmar nueva contraseña</label>
+			<%= password_field 'user', 'password_confirmation', :class => 'form-control' %>
+		  </div>
 		  <%= submit_tag 'Actualizar cuenta', :class => 'btn btn-primary' %>
 		<% end %>
 	</div>

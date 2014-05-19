@@ -1,0 +1,39 @@
+<h4> <%= @post.autor %> - <%=  @post.created_at.strftime("%H:%M:%S %d/%M/%Y") %> </h4>
+
+<p><b><%= @post.subject %></b></p>
+<p><%= @post.cuerpo %></p> 
+
+
+<h3>Comentarios</h3>
+
+<table class="table table-striped">
+  <tr>
+    <th width="20%">Autor</th>
+    <th>Comentario</th>
+    <% if current_user %>
+     <th>Admin</th>
+    <% end %>
+  </tr>
+
+  <% @post.comentarios.each do |comentario| %>
+  <tr id=<%= comentario.id %>>
+    <td>
+      <%= comentario.autor %> <br>
+      <%= comentario.created_at.strftime("%H:%M:%S %d/%M/%Y") %>
+    </td>
+    <td>
+      <p><%= comentario.cuerpo %></p>
+    </td>
+    <% if current_user %>
+     <td><%= link_to 'Eliminar', delete_comentario_path(@post, comentario), :method => :delete, :remote => true, :confirm => "¿Está seguro de que desea borrar este comentario?" %></td>
+    <% end %>
+  </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Comentar', reply_post_path(@post), :class => 'btn btn-primary' %>
+<%= link_to 'Atrás', foro_posts_path, :class => 'btn btn-default' %>
+
+<script>
+  $("#foro").addClass("active");
+</script>
