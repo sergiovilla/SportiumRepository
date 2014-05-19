@@ -53,7 +53,7 @@ class Order < ActiveRecord::Base
 
   def active_merchant_payment
     ActiveMerchant::Billing::Base.mode = :test
-    ActiveMerchant::Billing::AuthorizeNetGateway.default_currency = 'EUR'
+    ActiveMerchant::Billing::AuthorizeNetGateway.default_currency = 'USD'
     ActiveMerchant::Billing::AuthorizeNetGateway.wiredump_device = STDERR   
     ActiveMerchant::Billing::AuthorizeNetGateway.wiredump_device.sync = true
     self.status = 'fallida' # order status by default
