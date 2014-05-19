@@ -1,0 +1,16 @@
+<% unless @posts.empty? %>
+  <%= link_to 'Nuevo Post', post_path, :class => 'btn btn-primary' %> 
+  <br><br>
+
+  <div class="row">
+  	<div class="col-md-12">
+  	  <%= display_as_tree @posts %>
+  	</div>
+  </div>
+<% else %>
+  Aún no hay ningún Post, <%= link_to '¡Sé el primero en postear!', post_path %>
+<% end %>
+
+<div class="text-center">
+  <%= will_paginate @posts, :renderer => BootstrapPagination::Rails %>
+</div>

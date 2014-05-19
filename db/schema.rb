@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140517115744) do
+ActiveRecord::Schema.define(:version => 20140519210512) do
 
   create_table "cart_items", :force => true do |t|
     t.integer  "ropa_id"
@@ -30,16 +30,6 @@ ActiveRecord::Schema.define(:version => 20140517115744) do
   create_table "colors", :force => true do |t|
     t.string "nombre"
   end
-
-  create_table "comentarios", :force => true do |t|
-    t.string   "autor"
-    t.text     "cuerpo"
-    t.integer  "post_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "comentarios", ["post_id"], :name => "fk_comentarios_posts"
 
   create_table "marcas", :force => true do |t|
     t.string   "nombre"
@@ -78,12 +68,16 @@ ActiveRecord::Schema.define(:version => 20140517115744) do
   end
 
   create_table "posts", :force => true do |t|
-    t.string   "autor"
-    t.string   "titulo"
-    t.string   "subject"
-    t.text     "cuerpo"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "nombre",     :limit => 50,                :null => false
+    t.string   "subject",                                 :null => false
+    t.text     "texto"
+    t.integer  "root_id",                  :default => 0, :null => false
+    t.integer  "parent_id",                :default => 0, :null => false
+    t.integer  "lft",                      :default => 0, :null => false
+    t.integer  "rgt",                      :default => 0, :null => false
+    t.integer  "depth",                    :default => 0, :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
   end
 
   create_table "ropas", :force => true do |t|

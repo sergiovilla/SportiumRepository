@@ -1,10 +1,11 @@
 class Post < ActiveRecord::Base
-  has_many :comentarios
+  make_like_a_tree
 
-  validates :autor, :presence => true, :length => { :in => 2..15 }
-  validates :titulo, :presence => true, :length => { :in => 2..50 }
-  validates :subject, :presence => true, :length => { :in => 5..255 }
-  validates :cuerpo, :presence => true, :length => { :in => 5..5000 }
+  validates :nombre, :length => { :in => 2..50 }
+  validates :subject, :length => { :in => 5..255 }
+  validates :texto, :length => { :in => 5..5000 }
+
+  validates_presence_of :nombre, :subject, :texto
   
-  attr_accessible :autor, :titulo, :cuerpo, :subject
+  attr_accessible :nombre, :subject, :texto, :parent_id
 end

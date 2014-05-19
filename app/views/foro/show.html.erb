@@ -1,0 +1,13 @@
+<h3><%= @post.nombre%> dijo:</h3>
+
+<p><%= @post.texto %></p>
+
+<% if @post.children_count > 0 %>
+  <hr>
+  <h3>Respuestas</h3>
+  <%= display_as_tree @post.all_children %>
+  <br><br>
+<% end %>
+
+<%= link_to 'Responder', reply_post_path(@post), :class => 'btn btn-primary' %>
+<%= link_to 'Volver', foro_path, :class => 'btn btn-default' %>

@@ -48,13 +48,13 @@ Sportium::Application.routes.draw do
 
   resources :password_reset
 
-  namespace :foro do
-    resources :posts
-  end
+  get 'foro' => 'foro#index', as: 'foro'
+  get 'foro/post' => 'foro#post', as: 'post'
+  match 'foro/post/:id' => 'foro#show', as: 'ver_post'
+  match 'foro/post/:id/reply' => 'foro#reply', as: 'reply_post'
+  post 'foro/create' => 'foro#create', as: 'create_post' 
 
-  get 'posts/:id/reply' => 'foro/posts#reply', as: 'reply_post'
-  post 'posts/:id/reply' => 'foro/posts#save_reply', as: 'reply_post'
-  delete 'posts/:id/comment/:id_comment' => 'foro/comentarios#destroy', as: 'delete_comentario'
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
