@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class CatalogoBusquedaTest < ActionDispatch::IntegrationTest
+
 	fixtures :ropas, :marcas, :colors, :tallas
 
   test "navegar" do
