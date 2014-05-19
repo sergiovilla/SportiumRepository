@@ -1,3 +1,5 @@
+#encoding: utf-8
+
 class Order < ActiveRecord::Base
   attr_protected :id, :customer_ip, :status, :error_message, :created_at, :updated_at
   attr_accessor :card_type, :card_number, :card_expiration_month, :card_expiration_year,             
@@ -20,7 +22,7 @@ class Order < ActiveRecord::Base
   validates_length_of :ship_to_country_code, :in => 2..255
 
   validates_length_of :customer_ip, :in => 7..15
-  validates_inclusion_of :status, :in => %w(open processed closed failed)
+  validates_inclusion_of :status, :in => %w(abierta procesada cerrada fallida)
 
   validates_inclusion_of :card_type, :in => ['Visa', 'MasterCard', 'American Express', 'Discover'], :on => :create
   validates_length_of :card_number, :in => 13..19, :on => :create
@@ -38,12 +40,12 @@ class Order < ActiveRecord::Base
 
   def process
     begin
-      raise 'A closed order cannot be processed again' if self.closed?
+      raise 'Un pedido cerrado no puede ser procesado de nuevo' if self.closed?
       active_merchant_payment
     rescue => e
-      logger.error("Order #{id} failed due to raised exception: #{e}.")
+      logger.error("Pedido #{id} falló por una excepción: #{e}.")
       self.error_message = "Exception raised: #{e}"
-      self.status = 'failed'
+      self.status = 'fallida'
     end
     save!
     self.processed?
@@ -51,10 +53,10 @@ class Order < ActiveRecord::Base
 
   def active_merchant_payment
     ActiveMerchant::Billing::Base.mode = :test
-    ActiveMerchant::Billing::AuthorizeNetGateway.default_currency = 'USD'
+    ActiveMerchant::Billing::AuthorizeNetGateway.default_currency = 'EUR'
     ActiveMerchant::Billing::AuthorizeNetGateway.wiredump_device = STDERR   
     ActiveMerchant::Billing::AuthorizeNetGateway.wiredump_device.sync = true
-    self.status = 'failed' # order status by default
+    self.status = 'fallida' # order status by default
 
     # the card verification value is also known as CVV2, CVC2, or CID
     creditcard = ActiveMerchant::Billing::CreditCard.new(
@@ -80,7 +82,7 @@ class Order < ActiveRecord::Base
 
     # order information
     details = {
-      :description      => 'Emporium Bookstore purchase',
+      :description      => 'Sportium Ropa deportiva',
       :order_id         => self.id,
       :email            => email,
       :ip               => customer_ip,
@@ -102,29 +104,29 @@ class Order < ActiveRecord::Base
       response = gateway.purchase(amount, creditcard, details)
 
       if response.success?
-        self.status = 'processed'
+        self.status = 'procesada'
       else
         self.error_message = response.message
       end
     else
-      self.error_message = 'Credit card not valid'
+      self.error_message = 'Tarjeta de crédito no válida'
     end
   end
 
   def processed?
-    self.status == 'processed'
+    self.status == 'procesada'
   end
 
   def failed?
-    self.status == 'failed'
+    self.status == 'fallida'
   end
 
   def closed?
-    self.status == 'closed'
+    self.status == 'cerrada'
   end
 
   def close
-    self.status = 'closed'
+    self.status = 'cerrada'
     save!
   end
 end

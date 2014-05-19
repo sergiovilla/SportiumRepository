@@ -39,7 +39,8 @@ gem 'authlogic', '3.2.0'
 
 gem 'currencies', '0.4.0'
 
-gem 'countries', '0.9.2', :require => 'iso3166'
+gem 'countries', :require => 'iso3166'
+gem 'country_select'
 
 gem 'activemerchant', '1.31.1'
 

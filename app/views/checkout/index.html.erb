@@ -1,74 +1,87 @@
-#encoding: utf-8
+<p><em>Su pedido se muestra en el carrito de la compra a la derecha.</em></p>
 
-<% if @order.errors.any? %>
-  <div id="errorExplanation">
-  <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
-    <ul>
-      <% @order.errors.full_messages.each do |msg| %>
-        <% if msg.include?('Order items ') %>
-          <li><%= msg.gsub('Order items ', '') %></li>
-        <% else %>
-          <li><%= msg %></li>
-        <% end %>
-      <% end %>
-    </ul>
+<div class="row">
+  <div class="col-md-4">
+    <form method="post" id="checkout" action="<%= url_for :action => :submit_order %>">
+      
+      <fieldset>
+        <legend>Información de contacto</legend>
+        <div class="form-group">
+          <label for="order_email">Email</label>
+          <%= text_field :order, :email, :class => 'form-control' %></p>
+        </div>
+        <div class="form-group">
+          <label for="order_phone_number">Teléfono</label><br/>
+          <%= text_field :order, :phone_number, :class => 'form-control' %>
+        </div>
+      </fieldset>
+      <br>
+      <fieldset>
+        <legend>Direccion de envío</legend>
+        <div class="form-group">
+          <label for="order_ship_to_first_name">Nombre</label>
+          <%= text_field :order, :ship_to_first_name, :class => 'form-control' %>
+        </div>
+        <div class="form-group">
+          <label for="order_ship_to_last_name">Apellidos</label>
+          <%= text_field :order, :ship_to_last_name, :class => 'form-control' %>
+        </div>
+          <div class="form-group">
+          <label for="order_ship_to_address">Direccion</label>
+        <%= text_field :order, :ship_to_address, :class => 'form-control' %>
+          </div>
+        <div class="form-group">
+          <label for="order_ship_to_city">Ciudad</label>
+          <%= text_field :order, :ship_to_city, :class => 'form-control' %>
+        </div>
+        <div class="form-group">
+          <label for="order_ship_to_postal_code">Codigo postal</label>
+          <%= text_field :order, :ship_to_postal_code, :class => 'form-control' %>
+        </div>
+        <div class="form-group">
+          <label for="order_ship_to_country_code">Pais</label>
+          <%= country_select(:order, :ship_to_country_code, ['Spain'], { :class => 'form-control'} ) %>
+        </div>
+      </fieldset>
+      <br>
+      <fieldset>
+        <legend>Facturación</legend>
+        <div class="form-group">
+          <label for="order_card_type">Tipo de tarjeta de crédito</label>
+          <select name="order[card_type]" id="order_card_type" class="form-control">
+            <%= options_for_select(["Visa", "MasterCard", "American Express", "Discover"], @order.card_type) %>
+          </select>
+        </div>
+        <div class="form-inline">
+        <div class="form-group">
+          <label for="order_card_expiration_month">Fecha de caducidad: </label>
+          <select name="order[card_expiration_month]" class="form-control">
+            <%= options_for_select(%w(1 2 3 4 5 6 7 8 9 10 11 12), @order.card_expiration_month) %>
+          </select>
+          <select name="order[card_expiration_year]" class="form-control">
+            <%= options_for_select(%w(2013 2014 2015 2016 2017 2018), @order.card_expiration_year) %>
+          </select>
+        </div>
+        <br><br>
+        </div>
+        <div class="form-group">
+          <label for="order_card_number">Numero de la tarjeta</label>
+          <%= text_field :order, :card_number, :class => 'form-control' %>
+        </div>
+        <div class="form-group">
+          <label for="order_card_verification_value">
+            <abbr title="Card Verification Value">CVV</abbr> /
+            <abbr title="Card Validation Check">CVC</abbr>
+          </label>
+          <%= text_field :order, :card_verification_value, :class => 'form-control' %>
+        </div>
+      </fieldset>
+
+      <div class="field">
+        <%= hidden_field :cart, :id %>
+      </div>
+
+      <p><%= submit_tag "Realizar Pedido", :class => 'btn btn-primary' %></p>
+    </form>
   </div>
-<% end %>
-
-<p><em>Your order is displayed in the shopping cart to the right.</em></p>
-<form method="post" id="checkout" action="<%= url_for :action => :submit_order %>">
-  <fieldset>
-    <legend>Informacion de contacto</legend>
-    <p><label for="order_email">Email</label><br/>
-    <%= text_field :order, :email %></p>
-    <p><label for="order_phone_number">Phone number</label><br/>
-    <%= text_field :order, :phone_number %></p>
-  </fieldset>
-
-  <fieldset>
-    <legend>Direccion de envio</legend>
-    <p><label for="order_ship_to_first_name">Nombre</label><br/>
-    <%= text_field :order, :ship_to_first_name %></p>
-    <p><label for="order_ship_to_last_name">Apellidos</label><br/>
-    <%= text_field :order, :ship_to_last_name %></p>
-    <p><label for="order_ship_to_address">Direccion</label><br/>
-    <%= text_field :order, :ship_to_address %></p>
-    <p><label for="order_ship_to_city">Ciudad</label><br/>
-    <%= text_field :order, :ship_to_city %></p>
-    <p><label for="order_ship_to_postal_code">Codigo postal</label><br/>
-    <%= text_field :order, :ship_to_postal_code %></p>
-    <p><label for="order_ship_to_country_code">Pais</label><br/>
-    <%= country_select(:order, :ship_to_country_code, ['Spain']) %></p>
-  </fieldset>
-
-  <fieldset>
-    <legend>Facturacion</legend>
-    <p><label for="order_card_type">Tipo de tarjeta de credito</label><br/>
-    <select name="order[card_type]" id="order_card_type">
-      <%= options_for_select(["Visa", "MasterCard", "American Express", "Discover"], @order.card_type) %>
-    </select></p>
-    <p><label for="order_card_expiration_month">Fecha de caducidad</label><br/>
-    <select name="order[card_expiration_month]">
-      <%= options_for_select(%w(1 2 3 4 5 6 7 8 9 10 11 12), @order.card_expiration_month) %>
-    </select>
-    /
-    <select name="order[card_expiration_year]">
-      <%= options_for_select(%w(2013 2014 2015 2016 2017 2018), @order.card_expiration_year) %>
-    </select></p>
-    <p><label for="order_card_number">Numero de la tarjeta</label><br/>
-    <%= text_field :order, :card_number %></p>
-    <p>
-      <label for="order_card_verification_value">
-      <abbr title="Card Verification Value">CVV</abbr>/
-      <abbr title="Card Validation Check">CVC</abbr>
-      </label><br/>
-      <%= text_field :order, :card_verification_value %>
-    </p>
-  </fieldset>
-
-  <div class="field">
-    <%= hidden_field :cart, :id %>
-  </div>
-
-  <p><%= submit_tag "Submit Order" %></p>
-</form>
+</div>
