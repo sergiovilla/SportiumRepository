@@ -35,6 +35,9 @@ Sportium::Application.routes.draw do
   get 'user/edit'
   post 'user/update'
 
+  get 'checkout/index'
+  post 'checkout/submit_order'
+  get 'checkout/thank_you'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -14,6 +14,17 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
+    active_utils (2.1.1)
+      activesupport (>= 2.3.11)
+      i18n
+    activemerchant (1.31.1)
+      active_utils (>= 1.0.2)
+      activesupport (>= 2.3.14)
+      builder (>= 2.0.0)
+      i18n
+      json (>= 1.5.1)
+      money
+      nokogiri
     activemodel (3.2.9)
       activesupport (= 3.2.9)
       builder (~> 3.0.0)
@@ -44,7 +55,13 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    countries (0.9.2)
+      currencies (>= 0.4.0)
+    currencies (0.4.0)
     erubis (2.7.0)
+    eu_central_bank (0.3.5)
+      money (>= 5.0.0)
+      nokogiri
     execjs (2.0.2)
     hike (1.2.3)
     i18n (0.6.9)
@@ -60,8 +77,13 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25.1)
+    mini_portile (0.5.3)
+    money (6.1.1)
+      i18n (~> 0.6.4)
     multi_json (1.9.2)
     mysql2 (0.3.15)
+    nokogiri (1.6.1)
+      mini_portile (~> 0.5.0)
     paperclip (4.1.1)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -121,8 +143,12 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  activemerchant (= 1.31.1)
   authlogic (= 3.2.0)
   coffee-rails (~> 3.2.1)
+  countries (= 0.9.2)
+  currencies (= 0.4.0)
+  eu_central_bank (= 0.3.5)
   jquery-rails
   jquery-ui-rails
   mysql2
