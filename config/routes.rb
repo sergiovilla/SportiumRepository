@@ -42,12 +42,13 @@ Sportium::Application.routes.draw do
   get 'user/edit'
   post 'user/update'
 
-  get 'checkout/index'
+  get 'checkout/' => 'checkout#index'
   post 'checkout/submit_order'
   get 'checkout/gracias'
 
   resources :password_reset
 
+  # Rutas del Foro
   get 'foro' => 'foro#index', as: 'foro'
   get 'foro/post' => 'foro#post', as: 'post'
   match 'foro/post/:id' => 'foro#show', as: 'ver_post'

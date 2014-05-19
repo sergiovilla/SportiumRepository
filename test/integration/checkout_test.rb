@@ -1,23 +1,23 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class CheckoutTest < ActionDispatch::IntegrationTest
-  fixtures :publishers, :authors, :books
+  fixtures :ropas
 
   test "empty_cart_shows_error_message" do
     get '/checkout'
     assert_response :redirect
     assert_redirected_to :controller => 'catalog'
-    assert_equal flash[:notice], 'Your shopping cart is empty! ' +
-                                 'Please add at least one book to it before proceeding to check out.'
+    assert_equal flash[:notice], 'Tu carrito de la compra está vacío! ' +
+                'Por favor, agrega al menos una prenda para llevar a cabo tu orden'
   end
 
   test "submitting_order" do
     post '/cart/add', :id => 1
     get '/checkout'
     assert_response :success
-    assert_tag :tag => 'legend', :content => 'Contact Information'
-    assert_tag :tag => 'legend', :content => 'Shipping Address'
-    assert_tag :tag => 'legend', :content => 'Billing Information'
+    assert_tag :tag => 'legend', :content => 'Información de contacto'
+    assert_tag :tag => 'legend', :content => 'Direccion de envío'
+    assert_tag :tag => 'legend', :content => 'Facturación'
 
     post '/checkout/submit_order', :cart => { :id => Cart.last.id }, :order => {
       # Contact information
@@ -39,6 +39,6 @@ class CheckoutTest < ActionDispatch::IntegrationTest
     }
 
     assert_response :redirect
-    assert_redirected_to '/checkout/thank_you'
+    assert_redirected_to '/checkout/gracias'
   end
 end
