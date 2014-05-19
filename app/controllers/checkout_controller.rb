@@ -1,13 +1,13 @@
-#encoding utf-8
+#encoding: utf-8
 
 class CheckoutController < ApplicationController
   before_filter :initialize_cart, :only => :index
 
   def index
     @order = Order.new
-    @page_title = 'Checkout'
+    @page_title = 'Pagar'
     if @cart.cart_items.empty?
-    	    flash[:notice] = 'Tu carrito de la compra esta vacio! ' +
+    	    flash[:notice] = 'Tu carrito de la compra está vacío! ' +
     	    	    'Por favor, agrega al menos una prenda para llevar a cabo tu orden'
       redirect_to :controller => 'catalog'
     end
@@ -17,21 +17,22 @@ class CheckoutController < ApplicationController
     @cart = Cart.find(params[:cart][:id]) # Search the cart from the cart id hidden field of the form
     @order = Order.new(params[:order])
     @order.customer_ip = request.remote_ip
-    @order.status = 'open'
-    @page_title = 'Checkout'
+    @order.status = 'abierta'
+    @page_title = 'Pagar'
     populate_order
 
     if @order.save
       if @order.process
-      	      flash[:notice] = 'Tu orden ha sido recibida y sera procesada inmediatamente.'
+      	flash[:notice] = 'Tu orden ha sido recibida y será procesada inmediatamente.'
         session[:order_id] = @order.id
-        @cart.cart_items.destroy_all # empty shopping cart
+        @cart.cart_items.destroy_all # vacía carrito
         redirect_to :action => 'gracias'
       else
-      	      flash[:notice] = "Error mientras se guardaba la orden '#{@order.error_message}'."
+      	flash[:notice] = "Error mientras se guardaba la orden '#{@order.error_message}'."
         render :action => 'index'
       end
     else
+      flash[:error] = @order.errors.full_messages
       render :action => 'index'
     end
   end
