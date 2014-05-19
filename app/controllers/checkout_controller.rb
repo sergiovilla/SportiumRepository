@@ -1,3 +1,5 @@
+#encoding utf-8
+
 class CheckoutController < ApplicationController
   before_filter :initialize_cart, :only => :index
 
@@ -21,12 +23,12 @@ class CheckoutController < ApplicationController
 
     if @order.save
       if @order.process
-      	      flash[:notice] = 'Tu orden ha sido recibida y será procesada inmediatamente.'
+      	      flash[:notice] = 'Tu orden ha sido recibida y sera procesada inmediatamente.'
         session[:order_id] = @order.id
         @cart.cart_items.destroy_all # empty shopping cart
-        redirect_to :action => 'thank_you'
+        redirect_to :action => 'gracias'
       else
-        flash[:notice] = "Error when submitting order '#{@order.error_message}'."
+      	      flash[:notice] = "Error mientras se guardaba la orden '#{@order.error_message}'."
         render :action => 'index'
       end
     else
@@ -34,8 +36,8 @@ class CheckoutController < ApplicationController
     end
   end
 
-  def thank_you
-    @page_title = 'Thank you.'
+  def gracias
+    @page_title = 'Gracias.'
   end
 
   private
@@ -43,8 +45,8 @@ class CheckoutController < ApplicationController
   def populate_order
     for cart_item in @cart.cart_items
       order_item = OrderItem.new(:ropa_id => cart_item.ropa_id,
-                                 :price => cart_item.price,
-                                 :amount => cart_item.amount)
+      	      :price => cart_item.precio,
+      	      :amount => cart_item.cantidad)
       @order.order_items << order_item
     end
   end

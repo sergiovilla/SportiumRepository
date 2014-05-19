@@ -39,7 +39,7 @@ Sportium::Application.routes.draw do
 
   get 'checkout/index'
   post 'checkout/submit_order'
-  get 'checkout/thank_you'
+  get 'checkout/gracias'
 
   resources :password_reset
 
