@@ -57,13 +57,6 @@ ActiveRecord::Schema.define(:version => 20140517115744) do
     t.integer  "order_id"
     t.float    "price"
     t.integer  "amount"
-  end
-
-  create_table "posts", :force => true do |t|
-    t.string   "autor"
-    t.string   "titulo"
-    t.string   "subject"
-    t.text     "cuerpo"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -82,6 +75,15 @@ ActiveRecord::Schema.define(:version => 20140517115744) do
     t.string   "error_message"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
+  end
+
+  create_table "posts", :force => true do |t|
+    t.string   "autor"
+    t.string   "titulo"
+    t.string   "subject"
+    t.text     "cuerpo"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "ropas", :force => true do |t|

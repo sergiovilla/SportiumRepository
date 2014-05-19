@@ -2,7 +2,7 @@ $("#shopping_cart").prepend("<%=j render :partial => 'cart_notice' %>");
 
 <% if @cart.ropas.include?(@ropa) %>
 	$("#cart_item_<%=j "#{@ropa.id}" %>").html("<%=j render :partial => 'item', :object => @item %>");
-	$("#cart_item_<%=j "#{@ropa.id}" %>").effect("highlight", { color: "#aaaaaa"}, 3000);
+	$("#cart_item_<%=j "#{@ropa.id}" %>").effect("highlight", { color: "#f2dede"}, 3000);
 <% else %>	
 	$("#cart_item_<%=j "#{@ropa.id}" %>").fadeOut(1500);
 <% end %>
