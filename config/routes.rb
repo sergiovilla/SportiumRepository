@@ -19,7 +19,7 @@ Sportium::Application.routes.draw do
   post 'admin/order/close'
   get 'admin/order/show'
   match 'admin/order/show/:id' => 'admin/order#show'
-  match 'admin/orders' => 'admin/order#index', as 'admin_orders'
+  match 'admin/orders' => 'admin/order#index', as: 'admin_orders'
 
   match 'admin/ropas/new/:tipo' => 'admin/ropas#new', as: 'new_admin_ropa_tipo'
   match 'admin/Administrar' => 'admin/administrar#index', as: 'administrar'
