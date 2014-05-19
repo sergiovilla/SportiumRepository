@@ -14,7 +14,7 @@
   </tr>
  
 <% @posts_last_comment.each do |post, comment| %>
-  <tr>
+  <tr id="<%= post.id %>">
     <td>
       <%= post.autor %> <br>
       <%= post.created_at.strftime("%H:%M:%S %d/%M/%Y") %>
@@ -33,7 +33,7 @@
     <% if current_user %>
       <td>
         <%= link_to 'Moderar', edit_foro_post_path(post) %> <br>
-        <%= link_to 'Borrar', foro_post_path(post), :method => :delete %>
+        <%= link_to 'Borrar', foro_post_path(post), :method => :delete, :remote => true, :confirm => "¿Está seguro de que desea borrar este Post?" %>
       </td>
     <% end %>
   </tr>

@@ -68,8 +68,14 @@ class Foro::PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    flash[:success] = "Post eliminado correctamente"
-    redirect_to :action => 'index'
+
+    respond_to do |format|
+      format.html {
+        flash[:success] = "Post eliminado correctamente"
+        redirect_to :action => 'index'
+      }
+      format.js
+    end
   end
 
   private
