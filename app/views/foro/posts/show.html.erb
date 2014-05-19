@@ -16,7 +16,7 @@
   </tr>
 
   <% @post.comentarios.each do |comentario| %>
-  <tr>
+  <tr id=<%= comentario.id %>>
     <td>
       <%= comentario.autor %> <br>
       <%= comentario.created_at.strftime("%H:%M:%S %d/%M/%Y") %>
@@ -25,7 +25,7 @@
       <p><%= comentario.cuerpo %></p>
     </td>
     <% if current_user %>
-     <td><%= link_to 'Eliminar', delete_comentario_path(@post, comentario), :method => :delete %></td>
+     <td><%= link_to 'Eliminar', delete_comentario_path(@post, comentario), :method => :delete, :remote => true, :confirm => "¿Está seguro de que desea borrar este comentario?" %></td>
     <% end %>
   </tr>
   <% end %>

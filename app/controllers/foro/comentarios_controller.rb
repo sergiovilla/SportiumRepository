@@ -5,7 +5,12 @@ class Foro::ComentariosController < ApplicationController
     @comentario = Comentario.find(params[:id_comment])
     @comentario.destroy
 
-    flash[:notice] = "Comentario eliminado con éxito"
-    redirect_to foro_post_path(params[:id])
+    respond_to do |format|
+      format.html {
+      	flash[:notice] = "Comentario eliminado con éxito"
+        redirect_to foro_post_path(params[:id])
+      }
+      format.js
+    end
   end
 end
