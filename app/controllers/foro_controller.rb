@@ -32,8 +32,13 @@ class ForoController < ApplicationController
       flash[:notice] = 'Post creado de forma correcta'
       redirect_to :action => 'index'
     else
-      @page_title = 'Postear'
-      flash[:error] = @post.errors.full_messages
+      parent = Post.find_by_id(@post.parent_id)
+      if @post.parent_id == 0
+        @page_title = 'Postear'
+      else
+        @page_title = "Responder a '#{parent.subject}'"
+      end
+      flash.now[:error] = @post.errors.full_messages
       render :action => 'post'
     end
   end
