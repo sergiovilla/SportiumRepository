@@ -41,7 +41,7 @@ class AuthenticationTest < ActionDispatch::IntegrationTest
       post_login(login, password)
       assert_response :success
       assert_template 'user_session/new'
-      assert_tag :tag => 'div', :attributes => { :id => 'errorExplanation' }
+      assert_tag :tag => 'div', :attributes => { :class => 'alert alert-danger alert-dismissable' }
       assert_tag :tag => 'li', :content => 'Login is not valid'
     end
 
