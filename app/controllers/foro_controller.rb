@@ -42,4 +42,18 @@ class ForoController < ApplicationController
       render :action => 'post'
     end
   end
+
+  def destroy
+    @post = Post.find(params[:id])
+    childs = @post.all_children
+
+    childs.each do |post|
+      post.destroy
+    end
+
+    @post.destroy
+
+    flash[:success] = "Post eliminado correctamente"
+    redirect_to :action => 'index'
+  end
 end

@@ -9,7 +9,14 @@ module ForoHelper
 	  	contenido << %(<div style="margin-left:#{margin_left}px">
 	  					|- #{url} por <b>#{post.nombre}</b> &middot;
 	  					#{post.created_at.strftime("%H:%M:%S %d/%m/%Y")}
-	  				  </div>).html_safe
+	  				  ).html_safe
+		
+		if current_user and post.parent_id == 0
+		  contenido += link_to 'Borrar', delete_post_path(post.id), :method => :delete,
+		                :confirm => '¿Está seguro que desea eliminar este post junto con todos sus comentarios?', :class =>  'btn btn-danger btn-xs'
+		end
+
+		contenido << %(</div>).html_safe
 	  end
 	  contenido
 	end

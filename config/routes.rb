@@ -51,9 +51,10 @@ Sportium::Application.routes.draw do
   # Rutas del Foro
   get 'foro' => 'foro#index', as: 'foro'
   get 'foro/post' => 'foro#post', as: 'post'
-  match 'foro/post/:id' => 'foro#show', as: 'ver_post'
+  get 'foro/post/:id' => 'foro#show', as: 'ver_post'
   match 'foro/post/:id/reply' => 'foro#reply', as: 'reply_post'
-  post 'foro/create' => 'foro#create', as: 'create_post' 
+  post 'foro/create' => 'foro#create', as: 'create_post'
+  delete 'foro/post/:id' => 'foro#destroy', as: 'delete_post' 
 
   
 
