@@ -1,4 +1,6 @@
 class Ropa < ActiveRecord::Base
+  acts_as_taggable
+
 	belongs_to :marca
 	belongs_to :color
 	belongs_to :talla

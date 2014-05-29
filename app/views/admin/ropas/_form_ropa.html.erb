@@ -1,18 +1,27 @@
   <div class="form-group">
     <%= text_field 'ropa', 'tipo', :value => @tipo, :type => 'hidden', :class => 'form-control' %>
   </div>
+
   <div class="form-group">
     <label for="ropa_nombre">Nombre</label>
     <%= text_field  'ropa', 'nombre', :class => 'form-control' %>
   </div>
+
+  <div class="form-group">
+    <label for="ropa_nombre">Tags</label>
+    <%= text_field 'tags', nil, :value => @ropa.tag_list, :class => 'form-control', data: {autocomplete_source: autocomplete_ropa_path} %>
+  </div>
+
   <div class="form-group">
     <label for="ropa_modelo">Modelo</label>
     <%= text_field  'ropa', 'modelo', :class => 'form-control' %>
   </div>
+
   <div class="form-group">
     <label for="ropa_deporte">Deporte (opcional)</label>
     <%= text_field  'ropa', 'deporte', :class => 'form-control' %>
   </div>
+
   <div class="form-group">
     <label for="ropa_nom_equipo">Nombre del equipo (opcional)</label>
     <%= text_field  'ropa', 'nom_equipo', :class => 'form-control' %>

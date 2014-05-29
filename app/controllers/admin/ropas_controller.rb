@@ -15,9 +15,14 @@ class Admin::RopasController < Admin::AuthenticatedController
       render 'new_ropa'
     end
   end
+
+  def autocomplete
+    render :json => get_all_tags.map(&:name)
+  end
   
   def create
     @ropa = Ropa.new(params[:ropa])
+    @ropa.tag_list = params[:tags]
     if @ropa.save
       flash[:notice] = "#{@ropa.tipo} #{@ropa.nombre} creada correctamente."
       redirect_to :action => 'index'
@@ -49,7 +54,8 @@ class Admin::RopasController < Admin::AuthenticatedController
   end
 
   def update
- 	@ropa = get_ropa(params[:id])
+ 	  @ropa = get_ropa(params[:id])
+    @ropa.tag_list = params[:tags]
     if @ropa.update_attributes(params[:ropa])
       flash[:success] = "#{@ropa.nombre} actualizada correctamente"
       redirect_to :action => 'show', :id => @ropa
@@ -133,6 +139,9 @@ class Admin::RopasController < Admin::AuthenticatedController
   def get_all_tallas()
   	Talla.all
   end
-  
+
+  def get_all_tags()
+    Tag.all
+  end  
   
 end

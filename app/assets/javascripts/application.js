@@ -15,5 +15,6 @@
 //= require jquery.ui.draggable
 //= require jquery.ui.droppable
 //= require jquery.ui.effect-highlight
+//= require jquery.ui.autocomplete
 //= require bootstrap.min
 //= require_tree .

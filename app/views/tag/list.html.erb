@@ -1,0 +1,11 @@
+<% for tag in @tags %>
+  <%= link_to tag.name, show_tag_path(tag.name) %><br/>
+<% end %>
+
+<div class="text-center">
+  <%= will_paginate @tags, :renderer => BootstrapPagination::Rails %>
+</div>
+
+<script>
+  $("#tags").addClass('active');
+</script>

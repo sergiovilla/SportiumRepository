@@ -10,7 +10,7 @@ class RopaTest < ActionDispatch::IntegrationTest
   	
   	usuario = new_session_as(:usuario)
   	
-  	camiseta = usuario.add_ropa :ropa => {
+  	camiseta = usuario.add_ropa :tags => 'Real, Madrid, Equipo', :ropa => {
   								    :tipo => 'Camiseta',
 									:nombre => 'nombre random',
 									:precio => 20,
@@ -23,7 +23,7 @@ class RopaTest < ActionDispatch::IntegrationTest
     usuario.list_ropa
     usuario.show_ropa camiseta
 
-    usuario.edit_ropa camiseta, :ropa => {
+    usuario.edit_ropa camiseta, :tags => 'Barcelona', :ropa => {
                                     :tipo => 'Camiseta',
                                     :nombre => 'nombre editado',
                                     :precio => 25,
@@ -58,8 +58,11 @@ class RopaTest < ActionDispatch::IntegrationTest
       follow_redirect!
       assert_response :success
       assert_template 'admin/ropas/index'
+
+      ropa = Ropa.find_by_nombre(parameters[:ropa][:nombre])
+      assert_equal parameters[:tags].split(',').size, ropa.tag_list.size
       
-      return Ropa.find_by_nombre(parameters[:ropa][:nombre])
+      return ropa
   	end
 
     def edit_ropa(ropa, parameters)
@@ -71,6 +74,9 @@ class RopaTest < ActionDispatch::IntegrationTest
       follow_redirect!
       assert_response :success
       assert_template 'admin/ropas/show'
+
+      ropa.reload
+      assert_equal parameters[:tags].split(',').size, ropa.tag_list.size
     end
 
     def delete_ropa(ropa)

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class RopaTest < ActiveSupport::TestCase
 
-fixtures :tallas, :marcas, :colors
+  fixtures :tallas, :marcas, :colors
 
 	test 'create_common_attributes' do
 		ropa = Ropa.new(
@@ -65,5 +65,20 @@ fixtures :tallas, :marcas, :colors
 		assert_equal 'Adidas', ropa.marca.nombre
 		
 	end
+
+	test 'tagging' do
+	  ropa = Ropa.find(1)
+	  ropa.tag_list.add("Real", "Madrid")
+	  
+	  ropa.save
+	  ropa.reload
+
+	  assert ropa.tag_list.include?('Real')
+	  assert ropa.tag_list.include?('Madrid')
+
+	  assert_equal ['Real', 'Madrid'], ropa.tag_list
+      assert Ropa.tagged_with(["Real", "Madrid"], :any => true).size
+      assert Ropa.tagged_with(["Real", "Madrid"], :match_all => true).size
+    end
   
 end

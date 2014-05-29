@@ -50,6 +50,10 @@ gem 'eu_central_bank', '0.3.5'
 
 gem 'make_like_a_tree'
 
+# Tags
+
+gem 'acts-as-taggable-on'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

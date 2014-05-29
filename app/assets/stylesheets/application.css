@@ -10,5 +10,6 @@
  *
  *= require_self
  *= require bootstrap.min
+ *= require jquery.ui.autocomplete
  *= require_tree .
  */

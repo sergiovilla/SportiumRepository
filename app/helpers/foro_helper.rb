@@ -13,7 +13,8 @@ module ForoHelper
 		
 		if current_user and post.parent_id == 0
 		  contenido += link_to 'Borrar', delete_post_path(post.id), :method => :delete,
-		                :confirm => '¿Está seguro que desea eliminar este post junto con todos sus comentarios?', :class =>  'btn btn-danger btn-xs'
+		                :confirm => '¿Está seguro que desea eliminar este post junto con todos sus comentarios?',
+		                :class =>  'btn btn-danger btn-xs'
 		end
 
 		contenido << %(</div>).html_safe

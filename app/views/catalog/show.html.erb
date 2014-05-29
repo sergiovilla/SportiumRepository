@@ -5,7 +5,7 @@
 	    <% if @ropa.imagen.exists? then %>
     	  <%= image_tag @ropa.imagen.url(:large) %>
  	    <% else %>
-    	  <p> No hay imagen disponible. </p>
+    	  <%= image_tag '/imagenesCatalogo/no_disponible.gif' %>
   	    <% end %>
 	  </div>
 	</div> <!-- Imagen -->
@@ -57,6 +57,12 @@
 	  	  		  <br>
 	  	  		  <b>Talla USA: </b><%= @ropa.talla.nombre_usa %>
 				<% end %>
+				<br>
+	  	  		<!-- Tags -->
+	  	  		<% if @ropa.tag_list then %>
+	  	  		  <b>Tags: </b><%= display_tags @ropa %>
+	  	  		<% end %> 
+
 				<br><br>
 				<%= link_to 'Añadir al carrito', { :controller => 'cart', :action => 'add', :id => @ropa}, :class => 'btn btn-primary' %>
 	  	  	  </div>
@@ -64,8 +70,27 @@
   	  	</div>
   	  </div>
   	</div> <!-- Detalles -->
-  </div>
 
+  </div>
+	<!-- Productos relacionados por Tags -->
+    <div class="col-md-6 col-md-offset-1">
+  	  <% if @ropa.tag_list.any? %>
+  	    <h3>También puede gustarle...</h3>
+  	    <% for ropa in @ropa.find_related_tags %>
+  	      <div class="col-md-3">
+  	        <div class="product-image">
+	          <% if ropa.imagen.exists? then %>
+    	        <%= image_tag ropa.imagen.url(:thumb) %>
+ 	          <% else %>
+    	        <%= image_tag '/imagenesCatalogo/no_disponible.gif', :style => 'width:100px; height:100px;'%>
+  	          <% end %>
+	        </div>
+  	        <%= link_to ropa.nombre, catalogo_show_path(ropa) %> <br>
+  	        <%= sprintf("%.2f €", @ropa.precio) %>
+  	      </div>
+  	    <% end %>
+  	  <% end %>
+  	</div>
 </div>
 
 <script>

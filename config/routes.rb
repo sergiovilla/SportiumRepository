@@ -15,6 +15,8 @@ Sportium::Application.routes.draw do
   namespace :admin do
     resources :marcas, :tallas, :colors, :ropas
   end
+
+  get 'autocomplete' => 'admin/ropas#autocomplete', as: 'autocomplete_ropa'
   
   post 'admin/order/close'
   get 'admin/order/show'
@@ -55,6 +57,10 @@ Sportium::Application.routes.draw do
   match 'foro/post/:id/reply' => 'foro#reply', as: 'reply_post'
   post 'foro/create' => 'foro#create', as: 'create_post'
   delete 'foro/post/:id' => 'foro#destroy', as: 'delete_post' 
+
+  # Rutas de tags
+  get 'tags' => 'tag#list', as: 'tags' 
+  get 'tag/show/:name' => 'tag#show', as: 'show_tag'
 
   
 

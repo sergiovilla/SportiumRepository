@@ -1,6 +1,7 @@
 <tr>
   <td><%= ropa.tipo %></td>
   <td><%= link_to ropa.nombre, admin_ropa_path(ropa) %></td>
+  <td><%= display_tags ropa %></td>
   <td><%= link_to 'Editar', edit_admin_ropa_path(ropa) %></td>
   <td>
     <%= button_to "Borrar", admin_ropa_path(ropa), :method => :delete, 
