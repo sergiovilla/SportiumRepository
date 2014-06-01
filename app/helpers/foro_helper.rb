@@ -1,3 +1,4 @@
+#encoding: utf-8
 module ForoHelper
 
 	def display_as_tree(posts)
