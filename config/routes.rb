@@ -2,7 +2,8 @@ Sportium::Application.routes.draw do
 
   get "password_reset/new"
 
-  root :to => "about#index"
+  root :to => 'about#inicio'
+  get '/about' => 'about#index', as: 'about'
 
   match 'catalogo/search' => 'catalog#search', as: 'search'
   match 'catalogo' => 'catalog#index'
