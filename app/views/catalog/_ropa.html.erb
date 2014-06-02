@@ -13,7 +13,11 @@
 	  	  	<div>
 	  	  	  <div id="<%= ropa.id %>" class="ropa-imagen">
 	  	  	  	<%= link_to catalogo_show_path(ropa) do %>
-				  <%= image_tag ropa.imagen.url(:medium), :class => 'thumbnail' %>
+	  	  	  	  <% if ropa.imagen.exists? %>
+				    <%= image_tag ropa.imagen.url(:medium), :class => 'thumbnail' %>
+				  <% else %>
+				    <%= image_tag '/imagenesCatalogo/no_disponible.gif' %>
+				  <% end %>
 				<% end %>
 	  	  	  </div>
 	  	  	  <h5><%= link_to ropa.nombre, catalogo_show_path(ropa) %> 

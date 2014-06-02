@@ -62,6 +62,12 @@ Sportium::Application.routes.draw do
   # Rutas de tags
   get 'tags' => 'tag#list', as: 'tags' 
   get 'tag/show/:name' => 'tag#show', as: 'show_tag'
+  get 'admin/tags/new' => 'tag#new', as: 'new_tag'
+  post 'admin/tags' => 'tag#create', as: 'create_tag'
+  delete 'admin/tag/:id' => 'tag#destroy', as: 'delete_tag'
+  put 'admin/tag/:id' => 'tag#update', as: 'update_tag'
+  get 'admin/tag/:id/edit' => 'tag#edit', as: 'edit_tag'
+
 
   
 

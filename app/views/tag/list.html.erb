@@ -1,10 +1,37 @@
-<% for tag in @tags %>
-  <%= link_to tag.name, show_tag_path(tag.name) %><br/>
+<div class="row">
+<% if current_user %>
+   <div class="col-md-5">
+<% else %>
+   <div class="col-md-3">
 <% end %>
+
+  <table class="table table-striped">
+    <th>Etiqueta</th>
+    <% if current_user %>
+      <th>Editar</th>
+      <th>Eliminar</th>
+    <% end %>
+  <% for tag in @tags %>
+    <tr>
+      <td><%= link_to tag.name, show_tag_path(tag.name) %></td> 
+      <% if current_user %>
+        <td><%= link_to 'Editar', edit_tag_path(tag), :class => 'btn btn-success' %></td>
+        <td><%= link_to 'Borrar', delete_tag_path(tag), :method => :delete, :confirm => '¿Está seguro de que desea borrar la etiqueta?', :class => 'btn btn-danger' %></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </table>
+
+</div>
+</div>
 
 <div class="text-center">
   <%= will_paginate @tags, :renderer => BootstrapPagination::Rails %>
 </div>
+
+<% if current_user %>
+  <%= link_to 'Añadir Etiqueta', new_tag_path, :class => 'btn btn-primary' %>
+<% end %>
 
 <script>
   $("#tags").addClass('active');

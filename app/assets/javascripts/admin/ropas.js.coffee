@@ -2,8 +2,16 @@ jQuery ->
    $('#tags_').bind("keydown", (event) ->
      event.preventDefault() if event.keyCode is $.ui.keyCode.TAB and $(this).data("ui-autocomplete").menu.active
      return
-   ).autocomplete  
-     source: $('#tags_').data('autocomplete-source')
+   ).autocomplete
+     minLength: 2  
+     source: (request, response) ->
+      $.ajax
+        url: $('#tags_').data('autocomplete-source')
+        dataType: "json"
+        data:
+          name: request.term
+        success: (data) ->
+          response(data)
      focus: ->
      	false
      select: (event, ui) ->

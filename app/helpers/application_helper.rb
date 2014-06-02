@@ -11,8 +11,4 @@ module ApplicationHelper
 			"alert alert-danger alert-dismissable"
 		end
 	end
-
-  def display_tags(ropa)
-    ropa.tag_list.collect{|tag| link_to tag, show_tag_path(tag) }.join(", ").html_safe if ropa.tag_list
-  end
 end

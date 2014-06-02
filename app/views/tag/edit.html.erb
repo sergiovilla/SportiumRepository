@@ -1,0 +1,15 @@
+<div class="row">
+	<div class="col-md-4">
+		<%= form_tag update_tag_path(@tag), :method => 'put' do %>
+		  <%= render :partial => 'form' %>
+		  <%= submit_tag 'Actualizar Etiqueta', :class => 'btn btn-primary' %>
+		<% end %>
+	</div>
+</div>
+
+<br>
+<%= link_to 'Volver', tags_path, :class => 'btn btn-default' %>
+
+<script>
+	$('#admin').addClass('active');
+</script>

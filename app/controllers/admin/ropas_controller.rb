@@ -17,7 +17,15 @@ class Admin::RopasController < Admin::AuthenticatedController
   end
 
   def autocomplete
-    render :json => get_all_tags.map(&:name)
+    # Recogemos el último termino que está siendo escrito en el formulario
+    term = params[:name].split(', ').last.to_s
+
+    # Se buscan todos los tags que coinciden con el nombre 
+    tags = Tag.find(:all, :conditions => ['name LIKE ?', "%#{term}%"])
+    result = tags.collect do |t| 
+      { :value => t.name }
+    end
+    render :json => result
   end
   
   def create
@@ -139,9 +147,5 @@ class Admin::RopasController < Admin::AuthenticatedController
   def get_all_tallas()
   	Talla.all
   end
-
-  def get_all_tags()
-    Tag.all
-  end  
   
 end

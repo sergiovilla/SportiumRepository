@@ -73,8 +73,8 @@
 
   </div>
 	<!-- Productos relacionados por Tags -->
-    <div class="col-md-6 col-md-offset-1">
-  	  <% if @ropa.tag_list.any? %>
+  <% if @ropa.tag_list.any? %>
+    <div class="col-md-8 col-md-offset-1">
   	    <h3>También puede gustarle...</h3>
   	    <% count = 0 %>
   	    <% for ropa in @ropa.find_related_tags %>
@@ -92,8 +92,16 @@
   	      </div>
   	      <% count += 1 %>
   	    <% end %>
-  	  <% end %>
   	</div>
+	
+  	<div class="row">
+  	  <div class="col-md-6 col-md-offset-1">
+  	    <h5>Etiquetas relacionadas:</h5>
+  	    <%= related_tags(@ropa) %>
+  	  </div>
+  	</div>
+  <% end %>
+
 </div>
 
 <script>
