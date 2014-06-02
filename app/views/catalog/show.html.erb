@@ -76,7 +76,9 @@
     <div class="col-md-6 col-md-offset-1">
   	  <% if @ropa.tag_list.any? %>
   	    <h3>También puede gustarle...</h3>
+  	    <% count = 0 %>
   	    <% for ropa in @ropa.find_related_tags %>
+  	      <% break if count > 3 %>
   	      <div class="col-md-3">
   	        <div class="product-image">
 	          <% if ropa.imagen.exists? then %>
@@ -88,6 +90,7 @@
   	        <%= link_to ropa.nombre, catalogo_show_path(ropa) %> <br>
   	        <%= sprintf("%.2f €", @ropa.precio) %>
   	      </div>
+  	      <% count += 1 %>
   	    <% end %>
   	  <% end %>
   	</div>
