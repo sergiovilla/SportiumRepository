@@ -9,7 +9,7 @@
 
   <div class="form-group">
     <label for="ropa_nombre">Tags</label>
-    <input type="text" class="form-control" id="tags" name="tags" value="<%= @ropa.tag_list %>">
+    <%= text_field 'tags', nil, :value => @ropa.tag_list, :class => 'form-control', data: {autocomplete_source: autocomplete_ropa_path} %>
   </div>
 
   <div class="form-group">
